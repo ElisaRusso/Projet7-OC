@@ -37,18 +37,18 @@ Content-Type: application/json
 ###
 
 POST http://localhost:3000/api/articles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYwOTkyNDg3NSwiZXhwIjoxNjEwMDExMjc1fQ.G4EAWCgQE01i1-CiBw7PN3aSGCtEMmOG7RUSY6Df7Zc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMDQ1NTYwOSwiZXhwIjoxNjEwNTQyMDA5fQ.I_E7JNsLuhClcOsJI-xOHLEqargj2Y2KwU6d8sCrve4
 Content-Type: application/json
 
 {   
-    "userId": "1",
+    "userId": "6",
     "text":"Text"
 
 }
 
 ###
 GET http://localhost:3000/api/articles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYwOTg0OTA5NiwiZXhwIjoxNjA5OTM1NDk2fQ.MFyIYgMZQAFBYAwSJTdxpnZWyrJFXW4AQ0692oreaT8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMDQ0ODU2MywiZXhwIjoxNjEwNTM0OTYzfQ.6cCzJDiv8GvdSssU9CoDE4BzVnwj43KhtKRZfsRuTVI
 ###
 
 DELETE http://localhost:3000/api/articles/17
@@ -61,7 +61,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 
 ###
 
-PUT http://localhost:3000/api/articles/4
+PUT http://localhost:3000/api/articles/28
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYwOTg0OTA5NiwiZXhwIjoxNjA5OTM1NDk2fQ.MFyIYgMZQAFBYAwSJTdxpnZWyrJFXW4AQ0692oreaT8
 Content-Type: application/json
 

@@ -8,7 +8,7 @@ const User = require('../models/user');
 const Article = sequelize.define('Article', {
     // Model attributes are defined here
     userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER(11),
         allowNull: false
     },
     text: {
