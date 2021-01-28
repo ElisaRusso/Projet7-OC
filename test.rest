@@ -9,7 +9,7 @@ POST http://localhost:3000/api/auth/signup
 Content-Type: application/json
 
 {
-    "email":"test3@gmail.com",
+    "email":"test33@gmail.com",
     "password":"mdp"
 
 }
@@ -37,18 +37,18 @@ Content-Type: application/json
 ###
 
 POST http://localhost:3000/api/articles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMDQ1NTYwOSwiZXhwIjoxNjEwNTQyMDA5fQ.I_E7JNsLuhClcOsJI-xOHLEqargj2Y2KwU6d8sCrve4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMTMwMzkyNSwiZXhwIjoxNjExMzkwMzI1fQ.TfdQgr4OobS2zfE_i7Y1qVVO4LnJthblIrbiKGdqy2o
 Content-Type: application/json
 
 {   
-    "userId": "6",
+    "userId": 6,
     "text":"Text"
 
 }
 
 ###
 GET http://localhost:3000/api/articles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMDQ0ODU2MywiZXhwIjoxNjEwNTM0OTYzfQ.6cCzJDiv8GvdSssU9CoDE4BzVnwj43KhtKRZfsRuTVI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMTMwMzgzOCwiZXhwIjoxNjExMzkwMjM4fQ.BT4dPKy8g_FbN2Wfv9ojlLcI0yW2CVLOonGBCUWo314
 ###
 
 DELETE http://localhost:3000/api/articles/17

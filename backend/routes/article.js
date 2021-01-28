@@ -6,9 +6,9 @@ const articleCtrl = require('../controllers/article');
 
 
 router.post('/', auth, articleCtrl.createArticle);
-router.get('/', auth, articleCtrl.getAllArticles);
+router.get('/', articleCtrl.getAllArticles);
 router.delete('/:id', auth, articleCtrl.deleteArticle);
-router.get('/:id', auth, articleCtrl.getOneArticle);
+router.get('/:id', articleCtrl.getOneArticle);
 router.put('/:id', auth, articleCtrl.modifyArticle)
 
 

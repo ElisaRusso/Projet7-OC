@@ -20,9 +20,7 @@ app.use((req, res, next) => {
 
 
 
-app.get('/', function (request, response) {
-    response.sendFile(path.resolve('../frontend/index.html'))
-})
+
 app.use(bodyParser.json());
 app.use('/api/auth', userRoutes);
 app.use('/api/articles', articleRoutes);

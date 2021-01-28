@@ -1,28 +1,60 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header v-show="showModal">
+      <router-link to="/signup">Inscription</router-link>
+      <!-- <img alt="Groupomania Logo" src="./assets/icon-left-font.png" /> -->
+      <router-link to="/login">Connexion</router-link>
+      <router-link to="/">
+        <span @click="showModal = !showModal">Accueil </span></router-link
+      >
+    </header>
+    <!-- <Hdr /> -->
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data: function () {
+    return {
+      showModal: true,
+    };
+  },
+};
+// import Hdr from "./components/Header.vue";
+// export default {
+//   name: "Header",
+//   components: {
+//     Hdr,
+//   },
+// };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped lang="scss">
+img {
+  width: 10%;
+}
+a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  margin-bottom: 14px;
+  width: 20px;
+}
+a:hover {
+  color: red;
+}
+
+header {
+  height: 60px;
+  background: black;
+  margin: 0;
 }
 </style>
+<style lang="scss">
+body {
+  width: 100%;
+  margin: 0px;
+}
+</style>
+
