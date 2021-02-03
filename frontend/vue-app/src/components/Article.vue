@@ -18,8 +18,9 @@ export default {
   },
 
   mounted() {
+    const urlId = this.$route.params.id;
     axios
-      .get("http://localhost:3000/api/articles/1")
+      .get("http://localhost:3000/api/articles/" + urlId)
       .then(
         (response) => (
           (this.articles = response.data[0]), console.log(response.data)

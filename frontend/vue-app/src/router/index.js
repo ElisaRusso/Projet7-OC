@@ -4,6 +4,7 @@ import Login from '../views/Login'
 import Signup from '../views/Signup'
 import Home from '../views/Home'
 import ArticleV from '../views/Article'
+import createArticle from '../views/CreateArticle'
 
 
 
@@ -33,10 +34,16 @@ const routes = [
     meta: { title: 'Groupomania - Signup' }
   },
   {
-    path: '/article',
+    path: '/article/:id',
     component: ArticleV,
     name: 'ArticleV',
     meta: { title: 'Groupomania - Article' }
+  },
+  {
+    path: '/createArticle',
+    component: createArticle,
+    name: 'createArticle',
+    meta: { title: 'Groupomania - Ecrire un post' }
   }
 ]
 

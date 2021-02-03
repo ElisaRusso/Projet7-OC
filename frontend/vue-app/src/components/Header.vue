@@ -3,7 +3,6 @@
   <header>
     <a href="/signup" class="logout">Déconnexion</a>
     <a href="/login" class="account">Mon profil</a>
-    <!-- <a href="/login" class="post">Créer un post</a> -->
   </header>
 </template>
 

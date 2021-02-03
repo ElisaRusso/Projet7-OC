@@ -1,10 +1,12 @@
 <template>
   <div>
     <Hdr />
+    <router-link to="/createArticle/">
+      <div id="newArticleButton">Rédiger un article</div>
+    </router-link>
     <ul>
       <li v-for="(article, i) in articles" :key="i">
-        <!-- <a :href="'/article/' + article.id"> -->
-        <router-link to="/article">
+        <router-link :to="'/article/' + article.id">
           <div id="articles">
             <div id="userId">Utilisateur: {{ articles[i].userId }}</div>
             <div id="articleContent">
@@ -12,7 +14,6 @@
             </div>
           </div>
         </router-link>
-        <!-- </a> -->
       </li>
     </ul>
   </div>
@@ -70,5 +71,13 @@ li {
 }
 a {
   text-decoration: none;
+}
+
+#newArticleButton {
+  font-size: 30px;
+  border: solid 3px;
+  width: 220px;
+  text-align: center;
+  margin-top: 10px;
 }
 </style>

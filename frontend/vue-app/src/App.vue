@@ -1,14 +1,5 @@
 <template>
   <div id="app">
-    <header v-show="showModal">
-      <router-link to="/signup">Inscription</router-link>
-      <!-- <img alt="Groupomania Logo" src="./assets/icon-left-font.png" /> -->
-      <router-link to="/login">Connexion</router-link>
-      <router-link to="/">
-        <span @click="showModal = !showModal">Accueil </span></router-link
-      >
-    </header>
-    <!-- <Hdr /> -->
     <router-view />
   </div>
 </template>

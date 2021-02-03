@@ -1,42 +1,46 @@
 <template>
-  <form id="login">
-    <h1>Connexion</h1>
-    <div>
-      <label for="email">Email: </label>
-      <input
-        type="email"
-        id="email"
-        name="user_email"
-        placeholder="email@hotmail.com"
-        v-model="emailValue"
-      />
-    </div>
-    <div>
-      <label for="password">Mot de passe: </label>
-      <input
-        type="password"
-        id="password"
-        name="user_password"
-        placeholder="********"
-        v-model="passwordValue"
-      />
-    </div>
-    <div id="form-validate-button">
-      <input @click="login" type="submit" value="Valider" />
-    </div>
-  </form>
+  <div id="content">
+    <AuthHeader />
+
+    <form id="login">
+      <h1>Connexion</h1>
+      <div>
+        <label for="email">Email: </label>
+        <input
+          type="email"
+          id="email"
+          name="user_email"
+          placeholder="email@hotmail.com"
+          v-model="emailValue"
+        />
+      </div>
+      <div>
+        <label for="password">Mot de passe: </label>
+        <input
+          type="password"
+          id="password"
+          name="user_password"
+          placeholder="********"
+          v-model="passwordValue"
+        />
+      </div>
+      <div id="form-validate-button">
+        <input @click="login" type="submit" value="Valider" />
+      </div>
+    </form>
+  </div>
 </template>
 
 
 
 <script>
 import axios from "axios";
-// import AuthHeader from "../components/AuthHeader.vue";
+import AuthHeader from "../components/AuthHeader.vue";
 export default {
   name: "Login",
-  // components: {
-  //   AuthHeader,
-  // },
+  components: {
+    AuthHeader,
+  },
   data: function () {
     return {
       emailValue: "",
@@ -52,7 +56,13 @@ export default {
         headers: { "Content-Type": "application/json" },
         data: myForm,
       })
-        .then((response) => (this.myForm = response))
+        .then((response) => {
+          console.log(response.data.token);
+          if (response.data.token) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+          }
+        })
+        // (this.myForm = response))
         .catch((error) => console.log(error, myForm));
     },
   },
@@ -79,5 +89,9 @@ h1 {
 }
 div {
   margin-top: 20px;
+}
+#content {
+  width: 100%;
+  margin: auto;
 }
 </style>
