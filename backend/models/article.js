@@ -14,12 +14,17 @@ const Article = sequelize.define('Article', {
     text: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }
 );
 User.hasMany(Article, {
-    foreignKey: 'userId'
+    foreignKey: 'userId',
 });
+
 Article.belongsTo(User, { as: 'user' });
 
 module.exports = Article;

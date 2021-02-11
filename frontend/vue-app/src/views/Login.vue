@@ -49,22 +49,28 @@ export default {
   },
   methods: {
     login() {
-      let myForm = { email: this.emailValue, password: this.passwordValue };
       axios({
         method: "POST",
         url: "http://localhost:3000/api/auth/login",
         headers: { "Content-Type": "application/json" },
-        data: myForm,
+        data: { email: this.emailValue, password: this.passwordValue },
       })
         .then((response) => {
           console.log(response.data.token);
           if (response.data.token) {
             localStorage.setItem("user", JSON.stringify(response.data));
           }
+          this.$router.push("/");
         })
         // (this.myForm = response))
-        .catch((error) => console.log(error, myForm));
+        .catch((error) => console.log(error));
     },
+  },
+  mounted() {
+    const user = localStorage.getItem("user");
+    if (user) {
+      this.$router.push("/");
+    }
   },
 };
 </script>

@@ -1,7 +1,7 @@
 GET http://localhost:3000/api/auth/users
 
 ###
-GET http://localhost:3000/api/auth/users/1
+GET http://localhost:3000/api/auth/users/26
 
 ###
 
@@ -9,17 +9,8 @@ POST http://localhost:3000/api/auth/signup
 Content-Type: application/json
 
 {
-    "email":"test33@gmail.com",
-    "password":"mdp"
-
-}
-
-###
-POST http://localhost:3000/api/auth/login
-Content-Type: application/json
-
-{
-    "email":"test3@gmail.com",
+    "username": "Username",
+    "email":"test@gmail.com",
     "password":"mdp"
 
 }
@@ -35,34 +26,45 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"test3@gmail.com",
+    "password":"mdp"
+
+}
+
+###
 
 POST http://localhost:3000/api/articles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMTMwMzkyNSwiZXhwIjoxNjExMzkwMzI1fQ.TfdQgr4OobS2zfE_i7Y1qVVO4LnJthblIrbiKGdqy2o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2MTI4ODcyNjgsImV4cCI6MTYxMjk3MzY2OH0.85NyDv7Wldu0SLpzDc-2moEG6Tczcft51y224qZ6_wU
 Content-Type: application/json
 
 {   
-    "userId": 6,
-    "text":"Text"
+    "imageUrl": "image",
+    "userId": 25,
+    "text":"Text2"
 
 }
 
 ###
 GET http://localhost:3000/api/articles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTYxMTMwMzgzOCwiZXhwIjoxNjExMzkwMjM4fQ.BT4dPKy8g_FbN2Wfv9ojlLcI0yW2CVLOonGBCUWo314
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJpYXQiOjE2MTI5NzAxNTksImV4cCI6MTYxMzA1NjU1OX0.suOo1cPiEoD-IHAN7o3f7ZSlC-E5krRdnLUysAEXTUM
 ###
 
-DELETE http://localhost:3000/api/articles/17
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYwOTg0OTA5NiwiZXhwIjoxNjA5OTM1NDk2fQ.MFyIYgMZQAFBYAwSJTdxpnZWyrJFXW4AQ0692oreaT8
+DELETE http://localhost:3000/api/articles/28
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2MTI4ODAzMDcsImV4cCI6MTYxMjk2NjcwN30.xB9cpGRtwK2dGkcqUfUvejeZDpkrq_AromGYDz72wT4
 
 ###
 
-GET http://localhost:3000/api/articles/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYwOTg0OTA5NiwiZXhwIjoxNjA5OTM1NDk2fQ.MFyIYgMZQAFBYAwSJTdxpnZWyrJFXW4AQ0692oreaT8
+GET http://localhost:3000/api/articles/40
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJpYXQiOjE2MTI5NzAxNTksImV4cCI6MTYxMzA1NjU1OX0.suOo1cPiEoD-IHAN7o3f7ZSlC-E5krRdnLUysAEXTUM
 
 ###
 
 PUT http://localhost:3000/api/articles/28
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYwOTg0OTA5NiwiZXhwIjoxNjA5OTM1NDk2fQ.MFyIYgMZQAFBYAwSJTdxpnZWyrJFXW4AQ0692oreaT8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJpYXQiOjE2MTI4ODAyNDgsImV4cCI6MTYxMjk2NjY0OH0.Qa-AwgSQlHOHr-26-gNhPmMcSbyG9Jv4-ilo7WVmlPs
 Content-Type: application/json
 
 {

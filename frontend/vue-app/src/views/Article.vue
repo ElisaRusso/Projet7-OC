@@ -3,7 +3,8 @@
     <Hdr />
     <div id="articleContent">
       <Article />
-      <DeleteButton />
+      <DeleteButton v-show="isOwnerModal" />
+      <ModifyButton v-show="isOwnerModal" />
     </div>
   </div>
 </template>
@@ -12,13 +13,51 @@
 <script>
 import Article from "@/components/Article.vue";
 import DeleteButton from "@/components/DeleteArticle.vue";
+import ModifyButton from "@/components/ModifyArticle.vue";
 import Hdr from "../components/Header.vue";
+import axios from "axios";
 export default {
   name: "ArticleV",
   components: {
     Article,
     Hdr,
     DeleteButton,
+    ModifyButton,
+  },
+  data: function () {
+    return { isOwnerModal: false };
+  },
+  mounted() {
+    this.isOwner();
+  },
+
+  methods: {
+    isOwner() {
+      const urlId = this.$route.params.id;
+      axios
+        .get("http://localhost:3000/api/articles/" + urlId)
+        .then(
+          (response) => (
+            (this.articleUserId = response.data[0].userId),
+            this.isOwnerCheck(this.articleUserId)
+          )
+        )
+        .catch((error) => console.log(error));
+    },
+
+    isOwnerCheck() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      this.userId = user;
+
+      if (
+        this.userId.userId == this.articleUserId ||
+        this.userId.isAdmin == true
+      ) {
+        this.isOwnerModal = true;
+      } else {
+        this.isOwnerModal = false;
+      }
+    },
   },
 };
 </script>

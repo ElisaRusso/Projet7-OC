@@ -4,7 +4,8 @@ import Login from '../views/Login'
 import Signup from '../views/Signup'
 import Home from '../views/Home'
 import ArticleV from '../views/Article'
-import createArticle from '../views/CreateArticle'
+import Account from '../views/Account'
+
 
 
 
@@ -40,11 +41,12 @@ const routes = [
     meta: { title: 'Groupomania - Article' }
   },
   {
-    path: '/createArticle',
-    component: createArticle,
-    name: 'createArticle',
-    meta: { title: 'Groupomania - Ecrire un post' }
-  }
+    path: '/account',
+    component: Account,
+    name: 'Account',
+    meta: { title: 'Groupomania - Mon Profil' }
+  },
+
 ]
 
 const router = new VueRouter({

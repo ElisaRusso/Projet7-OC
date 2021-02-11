@@ -4,6 +4,16 @@
     <form id="signup">
       <h1>Inscription</h1>
       <div>
+        <label for="username">Nom d'Utilisateur: </label>
+        <input
+          type="username"
+          id="username"
+          name="user_username"
+          placeholder="Utilisateur01"
+          v-model="usernameValue"
+        />
+      </div>
+      <div>
         <label for="email">Email: </label>
         <input
           type="email"
@@ -42,24 +52,27 @@ export default {
   },
   data: function () {
     return {
+      usernameValue: "",
       emailValue: "",
       passwordValue: "",
     };
   },
   methods: {
     signup() {
-      let myForm = { email: this.emailValue, password: this.passwordValue };
       axios({
         method: "POST",
         url: "http://localhost:3000/api/auth/signup",
-        data: myForm,
+        data: {
+          username: this.usernameValue,
+          email: this.emailValue,
+          password: this.passwordValue,
+        },
         headers: { "Content-Type": "application/json" },
       })
         .then(() => {
-          console.log(myForm);
           console.log("Utilisateur créé!");
         })
-        .catch((error) => console.log(error, myForm));
+        .catch((error) => console.log(error));
     },
   },
 };

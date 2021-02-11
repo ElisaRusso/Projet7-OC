@@ -10,8 +10,10 @@ exports.signup = (req, res, next) => {
         .then(hash => {
 
             const user = new User({
+                username: req.body.username,
                 email: req.body.email,
-                password: hash
+                password: hash,
+                isAdmin: false,
             });
 
             user.save()
@@ -24,6 +26,7 @@ exports.signup = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 
 };
+
 
 
 
@@ -49,7 +52,8 @@ exports.login = (req, res, next) => {
                             { userId: user.id },
                             'RANDOM_TOKEN_SECRET',
                             { expiresIn: '24h' }
-                        )
+                        ),
+                        isAdmin: user.isAdmin,
                     });
                 })
                 .catch(error => res.status(500).json({ error }));
@@ -69,7 +73,7 @@ exports.GetAllUsers = (req, res, next) => {
 }
 
 
-exports.getOneUsers = (req, res, next) => {
+exports.getOneUser = (req, res, next) => {
     User.findAll({
         where: {
             id: req.params.id

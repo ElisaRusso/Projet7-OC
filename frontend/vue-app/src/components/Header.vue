@@ -1,14 +1,24 @@
 
 <template>
-  <header>
-    <a href="/signup" class="logout">Déconnexion</a>
-    <a href="/login" class="account">Mon profil</a>
-  </header>
+  <div>
+    <header>
+      <a href="#/account" class="account">Mon profil</a>
+      <a id="logo" href="/"
+        ><img src="@/assets/icon-left-font-monochrome-white.png"
+      /></a>
+      <a href="#/login" @click="logout" class="logout">Déconnexion</a>
+    </header>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Hdr",
+  methods: {
+    logout() {
+      localStorage.removeItem("user");
+    },
+  },
 };
 </script>
 
@@ -16,17 +26,23 @@ export default {
 a {
   text-decoration: none;
   color: white;
-  display: flex;
-  margin-bottom: 14px;
+  margin: 20px;
+  max-width: 200px;
 }
 a:hover {
   color: red;
 }
 
 header {
-  height: 60px;
+  display: flex;
+  height: 80px;
   background: black;
-  margin: 0;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+a > img {
+  width: 100%;
 }
 </style>
 <style lang="scss">

@@ -1,14 +1,12 @@
 <template>
   <div>
     <Hdr />
-    <router-link to="/createArticle/">
-      <div id="newArticleButton">Rédiger un article</div>
-    </router-link>
+    <createArticle />
     <ul>
       <li v-for="(article, i) in articles" :key="i">
         <router-link :to="'/article/' + article.id">
           <div id="articles">
-            <div id="userId">Utilisateur: {{ articles[i].userId }}</div>
+            <div id="userId">Utilisateur: {{ articles[i].user.username }}</div>
             <div id="articleContent">
               {{ articles[i].text }}
             </div>
@@ -23,26 +21,43 @@
 <script>
 import axios from "axios";
 import Hdr from "../components/Header.vue";
+import createArticle from "../components/CreateArticle";
 export default {
   name: "Home",
   components: {
     Hdr,
+    createArticle,
   },
   data: function () {
     return {
       articles: String,
+      user: String,
     };
   },
 
+  methods: {
+    displayArticles() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      axios({
+        method: "GET",
+        url: "http://localhost:3000/api/articles",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+        },
+      })
+        .then((response) => (this.articles = response.data))
+        .catch((error) => console.log(error));
+    },
+    checkIfToken() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user.token) {
+        this.displayArticles();
+      }
+    },
+  },
   mounted() {
-    axios
-      .get("http://localhost:3000/api/articles")
-      .then(
-        (response) => (
-          (this.articles = response.data), console.log(response.data)
-        )
-      )
-      .catch((error) => console.log(error));
+    this.checkIfToken();
   },
 };
 </script>
@@ -56,6 +71,7 @@ export default {
   margin: 40px;
   border: solid 2px;
   font-weight: bold;
+  color: black;
 }
 #userId {
   color: red;
@@ -76,7 +92,7 @@ a {
 #newArticleButton {
   font-size: 30px;
   border: solid 3px;
-  width: 220px;
+  width: 200px;
   text-align: center;
   margin-top: 10px;
 }
