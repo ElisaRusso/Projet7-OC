@@ -1,18 +1,32 @@
 const Article = require('../models/article');
 const sequelize = require('../db.config');
 const User = require('../models/user');
+const fs = require('fs');
+const Comment = require('../models/comment')
+
 
 
 
 exports.createArticle = (req, res, next) => {
     const articleObject = { ...req.body };
-    const article = new Article({
-        ...articleObject,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    });
-    article.save()
-        .then(() => res.status(201).json({ message: 'Article créé !' }))
-        .catch(error => res.status(400).json({ error }))
+    if (req.file) {
+        const article = new Article({
+            ...articleObject,
+            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        });
+        saveArticle(article);
+    }
+    else {
+        const article = new Article({
+            ...articleObject,
+        });
+        saveArticle(article);
+    }
+    function saveArticle(article) {
+        article.save()
+            .then(() => res.status(201).json({ message: 'Article créé !' }))
+            .catch(error => res.status(400).json({ error }))
+    }
 
 
 }
@@ -24,21 +38,67 @@ exports.deleteArticle = (req, res, next) => {
         }
     })
         .then(article => {
-            Article.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-                .then(() => res.status(200).json({ message: 'Objet supprimé !' }))
-                .catch(error => res.status(400).json({ error }));
+            if (req.file) {
+                const filename = article[0].imageUrl.split('/images/')[1];
+                fs.unlink(`images/${filename}`, () => {
+                    destroyArticle(article)
+                });
+            }
+            else {
+                destroyArticle()
+            }
         })
         .catch(error => res.status(500).json({ error }));
-}
 
+    function destroyArticle() {
+        Article.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(() => res.status(200).json({ message: 'Objet supprimé !' }))
+            .catch(error => res.status(400).json({ error }));
+    }
+};
+
+// exports.modifyArticle = (req, res, next) => {
+//     const articleObject = { ...req.body };
+//     Article.update(
+//         { ...articleObject, id: req.params.id },
+//         {
+//             where: {
+//                 id: req.params.id
+//             }
+//         })
+//         .then(() => res.status(200).json({ message: 'Objet modifié !' }))
+//         .catch(error => res.status(400).json({ error }));
+
+// }
 exports.modifyArticle = (req, res, next) => {
-    const articleObject = { ...req.body };
-    Article.update(
-        { ...articleObject, id: req.params.id },
+    if (req.file) {
+        Article.findAll({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(article => {
+                const filename = article[0].imageUrl.split('/images/')[1];
+                fs.unlink(`images/${filename}`, (err) => {
+                    if (err) throw err;
+                })
+            })
+            .catch(error => res.status(400).json({ error }));
+    }
+
+
+    const articleObject = req.file ?
+        {
+            ...JSON.parse(req.body),
+            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        } : { ...req.body };
+
+
+    Article.update({ ...articleObject, id: req.params.id },
         {
             where: {
                 id: req.params.id
@@ -46,15 +106,14 @@ exports.modifyArticle = (req, res, next) => {
         })
         .then(() => res.status(200).json({ message: 'Objet modifié !' }))
         .catch(error => res.status(400).json({ error }));
-
-}
+};
 
 exports.getOneArticle = (req, res, next) => {
     Article.findAll({
         where: {
             id: req.params.id
         },
-        include: [{ model: User, as: 'user' }]
+        include: [{ model: User, as: 'user' }],
     })
         .then(article => res.status(200).json(article))
         .catch(error => res.status(404).json({ error }));
@@ -62,7 +121,8 @@ exports.getOneArticle = (req, res, next) => {
 }
 
 exports.getAllArticles = (req, res, next) => {
-    Article.findAll({ include: [{ model: User, as: 'user' }] })
+    Article.findAll(
+        { include: [{ model: User, as: 'user' }] })
         .then(articles => res.status(201).json(articles))
         .catch(error => res.status(400).json({ error }));
 }

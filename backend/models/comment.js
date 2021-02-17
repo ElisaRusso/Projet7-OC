@@ -4,6 +4,7 @@ const sequelize = new Sequelize('groupomania_base', 'student', 'U5d)+Br63', {
     dialect: 'mysql'
 });
 const User = require('../models/user');
+const Article = require('./article');
 
 const Comment = sequelize.define('Comment', {
     // Model attributes are defined here
@@ -21,10 +22,14 @@ const Comment = sequelize.define('Comment', {
     }
 }
 );
-User.hasMany(Article, {
+User.hasMany(Comment, {
     foreignKey: 'userId',
 });
+Article.hasMany(Comment, {
+    foreignKey: 'articleId',
+});
 
-Article.belongsTo(User, { as: 'user' });
+Comment.belongsTo(User, { as: 'user' });
+Comment.belongsTo(Article, { as: 'article' });
 
-module.exports = Article;
+module.exports = Comment;

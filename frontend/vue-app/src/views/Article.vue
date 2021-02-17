@@ -5,6 +5,10 @@
       <Article />
       <DeleteButton v-show="isOwnerModal" />
       <ModifyButton v-show="isOwnerModal" />
+      <CreateComment />
+      <div>
+        <DisplayComment />
+      </div>
     </div>
   </div>
 </template>
@@ -15,7 +19,9 @@ import Article from "@/components/Article.vue";
 import DeleteButton from "@/components/DeleteArticle.vue";
 import ModifyButton from "@/components/ModifyArticle.vue";
 import Hdr from "../components/Header.vue";
+import DisplayComment from "../components/DisplayComments";
 import axios from "axios";
+import CreateComment from "../components/CreateComment.vue";
 export default {
   name: "ArticleV",
   components: {
@@ -23,6 +29,8 @@ export default {
     Hdr,
     DeleteButton,
     ModifyButton,
+    CreateComment,
+    DisplayComment,
   },
   data: function () {
     return { isOwnerModal: false };

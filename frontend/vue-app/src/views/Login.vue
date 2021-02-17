@@ -56,13 +56,11 @@ export default {
         data: { email: this.emailValue, password: this.passwordValue },
       })
         .then((response) => {
-          console.log(response.data.token);
           if (response.data.token) {
             localStorage.setItem("user", JSON.stringify(response.data));
           }
           this.$router.push("/");
         })
-        // (this.myForm = response))
         .catch((error) => console.log(error));
     },
   },

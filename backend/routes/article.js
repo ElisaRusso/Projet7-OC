@@ -12,7 +12,7 @@ router.post('/', auth, multer, articleCtrl.createArticle);
 router.get('/', auth, articleCtrl.getAllArticles);
 router.delete('/:id', auth, isOwner, articleCtrl.deleteArticle);
 router.get('/:id', articleCtrl.getOneArticle);
-router.put('/:id', auth, isOwner, articleCtrl.modifyArticle)
+router.put('/:id', auth, isOwner, multer, articleCtrl.modifyArticle)
 
 
 module.exports = router;

@@ -21,9 +21,12 @@ const Article = sequelize.define('Article', {
     }
 }
 );
+
+
 User.hasMany(Article, {
     foreignKey: 'userId',
 });
+
 
 Article.belongsTo(User, { as: 'user' });
 

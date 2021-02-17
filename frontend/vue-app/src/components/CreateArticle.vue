@@ -28,7 +28,6 @@
 
 
 <script>
-// import axios from "axios";
 import axios from "axios";
 export default {
   name: "createArticle",
@@ -52,30 +51,7 @@ export default {
       myForm.append("userId", user.userId);
       myForm.append("text", this.text);
       myForm.append("image", this.selectedFile);
-      // axios({
-      //   method: "POST",
-      //   url: "http://localhost:3000/api/articles",
-      //   data: { myForm },
-      //   // data: {
-      //   //   userId: user.userId,
-      //   //   text: this.text,
-      //   //   image: this.selectedFile,
-      //   // },
-      //   headers: {
-      //     // "Content-Type": "application/json",
-      //     // "Content-Type": "multipart/form-data",
-      //     Authorization: "Bearer " + user.token,
-      //   },
-      // })
-      // .then(() => {
-      //   console.log("Post créé!");
-      //   location.reload();
-      // })
-      // .catch(
-      //   (error) => console.log(error),
-      //   console.log(this.selectedFile),
-      //   console.log(myForm)
-      // );
+
       axios
         .post("http://localhost:3000/api/articles", myForm, config)
         .then(() => {

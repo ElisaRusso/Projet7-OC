@@ -32,6 +32,7 @@ export default {
     return {
       articles: String,
       user: String,
+      commentsLength: null,
     };
   },
 
