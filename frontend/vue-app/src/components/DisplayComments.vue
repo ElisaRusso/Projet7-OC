@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div id="content">
     <ul>
       <li v-for="(comments, i) in comments" :key="i">
         <div id="comments">
-          <div id="userId">Utilisateur: {{ comments.user.username }}</div>
+          <div id="userId">{{ comments.user.username }}</div>
           <div id="commentContent">
             {{ comments.text }}
             <!-- <deleteCommentButton /> -->
@@ -24,16 +24,14 @@
 
 <script>
 import axios from "axios";
-// import deleteCommentButton from "../components/DeleteComment";
 export default {
   name: "DisplayComment",
-  components: {
-    // deleteCommentButton,
-  },
+  components: {},
   data: function () {
     return {
       comments: String,
       user: String,
+      isOwnerModal: false,
     };
   },
   mounted() {
@@ -75,11 +73,25 @@ export default {
 #commentContent {
   margin-bottom: 15px;
 }
-li {
+li,
+ul {
   list-style: none;
 }
-
+ul {
+  width: 800px;
+  margin: 0;
+}
+#userId {
+  font-size: 20px;
+  font-weight: bold;
+}
 #comments {
   border: 1px solid black;
+  margin: 10px;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
 }
 </style>

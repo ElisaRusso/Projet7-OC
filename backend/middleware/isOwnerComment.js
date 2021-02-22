@@ -1,6 +1,6 @@
 const { compareSync } = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Article = require('../models/article');
+const Comment = require('../models/comment');
 const User = require('../models/user')
 
 
@@ -11,13 +11,13 @@ module.exports = (req, res, next) => {
         const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
         const userId = decodedToken.userId;
 
-        Article.findAll({
+        Comment.findAll({
             where: {
                 id: req.params.id
             }
         })
-            .then(article => {
-                if (article[0].userId == userId) {
+            .then(comment => {
+                if (comment[0].userId == userId) {
                     next()
 
                 } else {

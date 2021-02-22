@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="content">
     <div id="articleContent">
       <input
         type="article"
@@ -51,5 +51,16 @@ export default {
 <style scoped lang="scss">
 #article {
   height: 40px;
+  width: 50%;
+}
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#articleContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>

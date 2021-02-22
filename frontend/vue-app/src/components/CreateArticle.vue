@@ -5,7 +5,7 @@
         type="article"
         id="article"
         name="article"
-        placeholder="Ecrivez votre post"
+        placeholder="Que voulez vous dire?"
         v-model="text"
       />
       <input
@@ -50,7 +50,7 @@ export default {
       };
       myForm.append("userId", user.userId);
       myForm.append("text", this.text);
-      myForm.append("image", this.selectedFile);
+      myForm.append("imageUrl", this.selectedFile);
 
       axios
         .post("http://localhost:3000/api/articles", myForm, config)
@@ -69,7 +69,7 @@ export default {
 
 <style scoped lang="scss">
 #article {
-  width: 40%;
+  width: 30%;
   font-size: 20px;
 }
 

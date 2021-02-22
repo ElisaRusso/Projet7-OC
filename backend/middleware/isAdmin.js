@@ -1,9 +1,5 @@
-const { compareSync } = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Article = require('../models/article');
 const User = require('../models/user')
-
-
 
 module.exports = (req, res, next) => {
     try {
@@ -11,20 +7,20 @@ module.exports = (req, res, next) => {
         const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
         const userId = decodedToken.userId;
 
-        Article.findAll({
+        User.findOne({
             where: {
-                id: req.params.id
+                id: userId
             }
         })
-            .then(article => {
-                if (article[0].userId == userId) {
+            .then(user => {
+                if (user.isAdmin == true) {
+                    console.log(user.isAdmin)
                     next()
-
-                } else {
-                    throw 'Invalid user ID';
-
-
                 }
+                else {
+                    throw 'Not Admin';
+                }
+
             })
             .catch(error => res.status(400).json({ error }));
 

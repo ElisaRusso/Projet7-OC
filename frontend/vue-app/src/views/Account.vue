@@ -27,11 +27,7 @@ export default {
     this.userId = user.token;
     axios
       .get("http://localhost:3000/api/auth/users/" + user.userId)
-      .then(
-        (response) => (
-          (this.user = response.data[0]), console.log(this.userMail)
-        )
-      )
+      .then((response) => (this.user = response.data))
       .catch((error) => console.log(error));
   },
 };

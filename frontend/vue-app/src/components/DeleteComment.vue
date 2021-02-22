@@ -20,7 +20,6 @@ export default {
   methods: {
     deleteComment(commentId) {
       const user = JSON.parse(localStorage.getItem("user"));
-      //   const urlId = this.$route.params.id;
       axios({
         method: "DELETE",
         url: "http://localhost:3000/api/comments/" + commentId,
@@ -31,7 +30,6 @@ export default {
       })
         .then(() => {
           console.log("Commentaire supprimé!");
-          //   location.reload();
         })
         .catch((error) => console.log(error));
     },

@@ -1,9 +1,8 @@
 const Article = require('../models/article');
 const sequelize = require('../db.config');
 const User = require('../models/user');
-const fs = require('fs');
 const Comment = require('../models/comment')
-
+const fs = require('fs');
 
 
 
@@ -32,25 +31,30 @@ exports.createArticle = (req, res, next) => {
 }
 
 exports.deleteArticle = (req, res, next) => {
-    Article.findAll({
+    Article.findOne({
         where: {
             id: req.params.id
         }
     })
         .then(article => {
-            if (req.file) {
-                const filename = article[0].imageUrl.split('/images/')[1];
+            if (article.imageUrl != '' || article.imageUrl != null) {
+                const filename = article.imageUrl.split('/images/')[1];
                 fs.unlink(`images/${filename}`, () => {
                     destroyArticle(article)
                 });
             }
             else {
-                destroyArticle()
+                destroyArticle();
             }
         })
         .catch(error => res.status(500).json({ error }));
 
     function destroyArticle() {
+        Comment.destroy({
+            where: {
+                articleId: req.params.id
+            }
+        })
         Article.destroy({
             where: {
                 id: req.params.id
@@ -76,13 +80,13 @@ exports.deleteArticle = (req, res, next) => {
 // }
 exports.modifyArticle = (req, res, next) => {
     if (req.file) {
-        Article.findAll({
+        Article.findOne({
             where: {
                 id: req.params.id
             }
         })
             .then(article => {
-                const filename = article[0].imageUrl.split('/images/')[1];
+                const filename = article.imageUrl.split('/images/')[1];
                 fs.unlink(`images/${filename}`, (err) => {
                     if (err) throw err;
                 })
@@ -109,10 +113,8 @@ exports.modifyArticle = (req, res, next) => {
 };
 
 exports.getOneArticle = (req, res, next) => {
-    Article.findAll({
-        where: {
-            id: req.params.id
-        },
+    Article.findOne({
+        where: { id: req.params.id },
         include: [{ model: User, as: 'user' }],
     })
         .then(article => res.status(200).json(article))

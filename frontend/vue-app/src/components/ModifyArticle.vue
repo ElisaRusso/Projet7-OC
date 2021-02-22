@@ -12,7 +12,20 @@
         placeholder="Ecrivez votre post"
         v-model="text"
       />
+
+      <input
+        ref="fileInput"
+        style="display: none"
+        type="file"
+        name="image"
+        @change="onFileSelected"
+      />
+      <button id="addFileButton" @click="$refs.fileInput.click()">
+        Ajouter une image
+      </button>
+      {{ selectedFile.name }}
     </div>
+
     <div v-show="modifyingContent" id="form-validate-button">
       <input @click="modifyArticle" type="submit" value="Valider" />
     </div>
@@ -28,6 +41,7 @@ export default {
     return {
       text: "",
       modifyingContent: false,
+      selectedFile: "",
     };
   },
   methods: {
@@ -48,6 +62,9 @@ export default {
           location.reload();
         })
         .catch((error) => console.log(error));
+    },
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0];
     },
   },
 };

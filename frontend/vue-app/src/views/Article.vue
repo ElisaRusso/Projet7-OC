@@ -2,13 +2,14 @@
   <div>
     <Hdr />
     <div id="articleContent">
-      <Article />
       <DeleteButton v-show="isOwnerModal" />
       <ModifyButton v-show="isOwnerModal" />
-      <CreateComment />
-      <div>
+      <Article />
+      <div id="comment">
         <DisplayComment />
+        <!-- <deleteCommentButton /> -->
       </div>
+      <CreateComment />
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@ import Hdr from "../components/Header.vue";
 import DisplayComment from "../components/DisplayComments";
 import axios from "axios";
 import CreateComment from "../components/CreateComment.vue";
+// import deleteCommentButton from "../components/DeleteComment";
 export default {
   name: "ArticleV",
   components: {
@@ -31,6 +33,7 @@ export default {
     ModifyButton,
     CreateComment,
     DisplayComment,
+    // deleteCommentButton,
   },
   data: function () {
     return { isOwnerModal: false };
@@ -46,7 +49,7 @@ export default {
         .get("http://localhost:3000/api/articles/" + urlId)
         .then(
           (response) => (
-            (this.articleUserId = response.data[0].userId),
+            (this.articleUserId = response.data.userId),
             this.isOwnerCheck(this.articleUserId)
           )
         )
@@ -73,6 +76,9 @@ export default {
 <style scoped lang="scss">
 #articleContent {
   margin-top: 40px;
+}
+#comment {
+  margin-top: 10px;
 }
 </style>
 

@@ -5,6 +5,7 @@ const router = express.Router();
 const auth = require('../middleware/auth')
 const articleCtrl = require('../controllers/article');
 const isOwner = require('../middleware/isOwner');
+const isAdmin = require('../middleware/isAdmin');
 
 
 

@@ -6,10 +6,11 @@
       <li v-for="(article, i) in articles" :key="i">
         <router-link :to="'/article/' + article.id">
           <div id="articles">
-            <div id="userId">Utilisateur: {{ articles[i].user.username }}</div>
+            <div id="userId">{{ articles[i].user.username }}</div>
             <div id="articleContent">
               {{ articles[i].text }}
             </div>
+            <div><img id="articleImage" :src="articles[i].imageUrl" /></div>
           </div>
         </router-link>
       </li>
@@ -69,15 +70,16 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 40px;
   border: solid 2px;
   font-weight: bold;
   color: black;
+  width: 30%;
+  margin: auto;
+  margin-bottom: 10px;
 }
 #userId {
-  color: red;
-  border: solid 1px;
   width: 100px;
+  font-size: 25px;
 }
 ul {
   display: flex;
@@ -90,11 +92,11 @@ a {
   text-decoration: none;
 }
 
-#newArticleButton {
-  font-size: 30px;
-  border: solid 3px;
-  width: 200px;
-  text-align: center;
-  margin-top: 10px;
+#articleImage {
+  width: 100%;
+}
+#articleContent {
+  font-size: 20px;
+  text-align: left;
 }
 </style>

@@ -25,8 +25,8 @@ export default {
       .get("http://localhost:3000/api/articles/" + urlId)
       .then(
         (response) => (
-          (this.articles = response.data[0]),
-          (this.user = JSON.stringify(response.data[0].userId)),
+          (this.articles = response.data),
+          (this.user = JSON.stringify(response.data.userId)),
           this.displayUsername(this.user)
         )
       )
@@ -36,7 +36,7 @@ export default {
     displayUsername(userID) {
       axios
         .get("http://localhost:3000/api/auth/users/" + userID)
-        .then((response) => (this.user = response.data[0]))
+        .then((response) => (this.user = response.data))
         .catch((error) => console.log(error));
     },
   },
@@ -46,7 +46,7 @@ export default {
 <style scoped lang="scss">
 div {
   border: solid 3px;
-  width: 200px;
+  max-width: 60%;
   text-align: center;
 }
 

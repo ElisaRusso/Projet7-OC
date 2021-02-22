@@ -74,7 +74,7 @@ exports.GetAllUsers = (req, res, next) => {
 
 
 exports.getOneUser = (req, res, next) => {
-    User.findAll({
+    User.findOne({
         where: {
             id: req.params.id
         }
