@@ -48,15 +48,17 @@ export default {
     modifyArticle() {
       const user = JSON.parse(localStorage.getItem("user"));
       const urlId = this.$route.params.id;
-      axios({
-        method: "PUT",
-        data: { text: this.text },
-        url: "http://localhost:3000/api/articles/" + urlId,
+      const myForm = new FormData();
+      const config = {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
           Authorization: "Bearer " + user.token,
         },
-      })
+      };
+      myForm.append("text", this.text);
+      myForm.append("imageUrl", this.selectedFile);
+      axios
+        .put("http://localhost:3000/api/articles/" + urlId, myForm, config)
         .then(() => {
           console.log("Post modifié!");
           location.reload();
