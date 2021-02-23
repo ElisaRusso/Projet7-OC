@@ -1,9 +1,7 @@
-const { Sequelize, DataTypes, Op } = require('sequelize');
-const sequelize = new Sequelize('groupomania_base', 'student', 'U5d)+Br63', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
+// const sequelize = require('../db.config');
 const User = require('../models/user');
+const { Sequelize, DataTypes, Op } = require('sequelize');
+const sequelize = require('../db.config')
 
 const Article = sequelize.define('Article', {
     // Model attributes are defined here

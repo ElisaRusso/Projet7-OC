@@ -1,5 +1,4 @@
 const Article = require('../models/article');
-const sequelize = require('../db.config');
 const User = require('../models/user');
 const Comment = require('../models/comment')
 const fs = require('fs');

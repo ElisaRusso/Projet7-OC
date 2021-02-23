@@ -26,7 +26,6 @@ export default {
         },
       })
         .then(() => {
-          console.log("Post supprimé!");
           this.$router.push("/");
         })
         .catch((error) => console.log(error));

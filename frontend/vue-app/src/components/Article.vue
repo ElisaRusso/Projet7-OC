@@ -1,8 +1,8 @@
 <template>
   <span>
     <div>
-      <p>Utilisateur: {{ user.username }}</p>
-      <p>{{ articles.text }}</p>
+      <p id="username">{{ user.username }}</p>
+      <p id="articleContent">{{ articles.text }}</p>
       <img :src="articles.imageUrl" />
     </div>
   </span>
@@ -47,7 +47,8 @@ export default {
 div {
   border: solid 3px;
   max-width: 60%;
-  text-align: center;
+  // text-align: center;
+  min-width: 40%;
 }
 
 span {
@@ -56,5 +57,13 @@ span {
 }
 img {
   width: 100%;
+}
+#username {
+  font-size: 25px;
+  font-weight: bold;
+}
+#articleContent {
+  font-size: 20px;
+  margin-left: 20px;
 }
 </style>

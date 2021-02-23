@@ -51,13 +51,7 @@ server.on('listening', () => {
 server.listen(port);
 
 
-const { Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize('groupomania_base', 'student', 'U5d)+Br63', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
-
+const sequelize = require('./db.config')
 sequelize.authenticate()
     .then(() => console.log('Connection has been established successfully.'))
     .catch(err => console.log('Unable to connect to the database:' + err))

@@ -60,7 +60,6 @@ export default {
       axios
         .put("http://localhost:3000/api/articles/" + urlId, myForm, config)
         .then(() => {
-          console.log("Post modifié!");
           location.reload();
         })
         .catch((error) => console.log(error));
