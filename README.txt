@@ -8,6 +8,7 @@ DB_BASE='//Nom de la base de données'
 DB_HOST='//Nom d'hôte'
 DB_USER='//Identifiant'
 DB_PASS='//Mot de passe'
+TOKEN='//TOKEN'
 
 Etape 3: Dans la console taper les lignes suivantes:
 	- cd frontend
