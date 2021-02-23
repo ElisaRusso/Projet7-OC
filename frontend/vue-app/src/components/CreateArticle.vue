@@ -5,7 +5,7 @@
         type="article"
         id="article"
         name="article"
-        placeholder="Que voulez vous dire?"
+        placeholder="Que voulez vous dire"
         v-model="text"
       />
       <input

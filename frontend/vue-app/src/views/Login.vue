@@ -59,7 +59,7 @@ export default {
           if (response.data.token) {
             localStorage.setItem("user", JSON.stringify(response.data));
           }
-          this.$router.push("/");
+          this.$router.push("/home");
         })
         .catch((error) => console.log(error));
     },
@@ -67,7 +67,7 @@ export default {
   mounted() {
     const user = localStorage.getItem("user");
     if (user) {
-      this.$router.push("/");
+      this.$router.push("/home");
     }
   },
 };

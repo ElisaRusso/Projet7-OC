@@ -15,7 +15,7 @@ Vue.use(VueRouter)
 const routes = [
 
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home,
     meta: { title: 'Groupomania - Accueil' }
@@ -25,14 +25,14 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
-    meta: { title: 'Groupomania - Login' }
+    meta: { title: 'Groupomania - Connexion' }
 
   },
   {
-    path: '/signup',
+    path: '/',
     component: Signup,
     name: 'Signup',
-    meta: { title: 'Groupomania - Signup' }
+    meta: { title: 'Groupomania - Inscription' }
   },
   {
     path: '/article/:id',
@@ -50,12 +50,13 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
-  next()
+  next();
 });
 
 export default router

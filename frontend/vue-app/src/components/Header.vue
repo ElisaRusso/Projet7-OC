@@ -2,11 +2,11 @@
 <template>
   <div>
     <header>
-      <a href="#/account" class="account">Mon profil</a>
-      <a id="logo" href="/"
+      <a href="/account" class="account">Mon profil</a>
+      <a id="logo" href="/home"
         ><img src="@/assets/icon-left-font-monochrome-white.png"
       /></a>
-      <a href="#/login" @click="logout" class="logout">Déconnexion</a>
+      <a href="/login" @click="logout" class="logout">Déconnexion</a>
     </header>
   </div>
 </template>

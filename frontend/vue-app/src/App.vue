@@ -7,18 +7,9 @@
 <script>
 export default {
   data: function () {
-    return {
-      showModal: true,
-    };
+    return {};
   },
 };
-// import Hdr from "./components/Header.vue";
-// export default {
-//   name: "Header",
-//   components: {
-//     Hdr,
-//   },
-// };
 </script>
 
 <style scoped lang="scss">

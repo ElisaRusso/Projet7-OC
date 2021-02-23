@@ -70,7 +70,7 @@ export default {
         headers: { "Content-Type": "application/json" },
       })
         .then(() => {
-          console.log("Utilisateur créé!");
+          this.$router.push("/login");
         })
         .catch((error) => console.log(error));
     },

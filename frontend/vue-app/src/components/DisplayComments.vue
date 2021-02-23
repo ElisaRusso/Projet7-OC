@@ -10,6 +10,7 @@
           </div>
 
           <button
+            v-if="comments.user.id == user.userId || user.isAdmin == true"
             class="deleteButton"
             @click="deleteComment(comments.id)"
             type="button"
@@ -29,19 +30,19 @@ export default {
   data: function () {
     return {
       comments: String,
-      user: String,
       isOwnerModal: false,
+      user: null,
     };
   },
   mounted() {
     const urlId = this.$route.params.id;
-    const user = JSON.parse(localStorage.getItem("user"));
+    this.user = JSON.parse(localStorage.getItem("user"));
     axios({
       method: "GET",
       url: "http://localhost:3000/api/comments/" + urlId,
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
+        Authorization: "Bearer " + this.user.token,
       },
     })
       .then((response) => (this.comments = response.data))
@@ -49,13 +50,12 @@ export default {
   },
   methods: {
     deleteComment(commentId) {
-      const user = JSON.parse(localStorage.getItem("user"));
       axios({
         method: "DELETE",
         url: "http://localhost:3000/api/comments/" + commentId,
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + user.token,
+          Authorization: "Bearer " + this.user.token,
         },
       })
         .then(() => {

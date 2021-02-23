@@ -26,7 +26,7 @@ export default {
         },
       })
         .then(() => {
-          this.$router.push("/");
+          this.$router.push("/home");
         })
         .catch((error) => console.log(error));
     },

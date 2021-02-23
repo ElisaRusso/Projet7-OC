@@ -50,13 +50,7 @@ export default {
     checkUser() {
       axios
         .get("http://localhost:3000/api/auth/user/" + this.selectedButton)
-        .then(
-          (response) => (
-            (this.user = response.data.id),
-            console.log(this.user),
-            this.deleteUser()
-          )
-        )
+        .then((response) => ((this.user = response.data.id), this.deleteUser()))
         .catch((error) => console.log(error));
     },
     deleteUser() {
