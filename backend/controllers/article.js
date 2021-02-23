@@ -64,19 +64,6 @@ exports.deleteArticle = (req, res, next) => {
     }
 };
 
-// exports.modifyArticle = (req, res, next) => {
-//     const articleObject = { ...req.body };
-//     Article.update(
-//         { ...articleObject, id: req.params.id },
-//         {
-//             where: {
-//                 id: req.params.id
-//             }
-//         })
-//         .then(() => res.status(200).json({ message: 'Objet modifié !' }))
-//         .catch(error => res.status(400).json({ error }));
-
-// }
 exports.modifyArticle = (req, res, next) => {
     if (req.file) {
         Article.findOne({

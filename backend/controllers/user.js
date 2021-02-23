@@ -1,6 +1,8 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Article = require('../models/article');
+const Comment = require('../models/comment');
 
 
 exports.signup = (req, res, next) => {
@@ -65,7 +67,6 @@ exports.login = (req, res, next) => {
 
 
 exports.GetAllUsers = (req, res, next) => {
-
     User.findAll()
         .then(users => res.status(200).json(users))
         .catch(error => res.status(400).json({ error }));
@@ -79,6 +80,38 @@ exports.getOneUser = (req, res, next) => {
         }
     })
         .then(user => res.status(200).json(user))
+        .catch(error => res.status(400).json({ error }));
+
+}
+
+exports.getOneUserByUsername = (req, res, next) => {
+    User.findOne({
+        where: {
+            username: req.params.username
+        }
+    })
+        .then(user => res.status(200).json(user))
+        .catch(error => res.status(400).json({ error }));
+
+}
+
+exports.deleteUser = (req, res, next) => {
+    Article.destroy({
+        where: {
+            userId: req.params.id
+        }
+    })
+    Comment.destroy({
+        where: {
+            userId: req.params.id
+        }
+    })
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(() => res.status(200).json({ message: 'Utilisateur supprimé !' }))
         .catch(error => res.status(400).json({ error }));
 
 }

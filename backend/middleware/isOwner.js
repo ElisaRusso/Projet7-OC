@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
         const token = req.headers.authorization.split(' ')[1];
         const decodedToken = jwt.verify(token, process.env.TOKEN);
         const userId = decodedToken.userId;
-
+        console.log(req.body)
         Article.findAll({
             where: {
                 id: req.params.id
@@ -18,7 +18,8 @@ module.exports = (req, res, next) => {
         })
             .then(article => {
                 if (article[0].userId == userId) {
-                    next()
+                    next();
+                    console.log(req.body)
 
                 } else {
                     throw 'Invalid user ID';

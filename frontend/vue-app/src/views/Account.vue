@@ -5,16 +5,21 @@
       Adresse e-mail: {{ this.user.email }}
     </div>
     <div>Nom d'utilisateur: {{ this.user.username }}</div>
+    <div>
+      <DisplayUsers />
+    </div>
   </div>
 </template>
 
 <script>
 import Hdr from "../components/Header.vue";
+import DisplayUsers from "../components/DisplayUsers";
 import axios from "axios";
 export default {
   name: "Account",
   components: {
     Hdr,
+    DisplayUsers,
   },
   data: function () {
     return {

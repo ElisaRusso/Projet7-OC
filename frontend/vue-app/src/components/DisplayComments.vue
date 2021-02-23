@@ -26,7 +26,6 @@
 import axios from "axios";
 export default {
   name: "DisplayComment",
-  components: {},
   data: function () {
     return {
       comments: String,
