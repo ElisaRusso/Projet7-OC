@@ -105,7 +105,6 @@ exports.getOneArticle = (req, res, next) => {
     })
         .then(article => res.status(200).json(article))
         .catch(error => res.status(404).json({ error }));
-
 }
 
 exports.getAllArticles = (req, res, next) => {

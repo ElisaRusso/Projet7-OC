@@ -16,6 +16,7 @@ export default {
     return {
       articles: String,
       user: String,
+      showModal: true,
     };
   },
 

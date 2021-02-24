@@ -22,6 +22,7 @@
           name="user_password"
           placeholder="********"
           v-model="passwordValue"
+          autocomplete="on"
         />
       </div>
       <div id="form-validate-button">
@@ -48,7 +49,8 @@ export default {
     };
   },
   methods: {
-    login() {
+    login(e) {
+      e.preventDefault();
       axios({
         method: "POST",
         url: "http://localhost:3000/api/auth/login",
@@ -58,8 +60,8 @@ export default {
         .then((response) => {
           if (response.data.token) {
             localStorage.setItem("user", JSON.stringify(response.data));
+            this.$router.push("/home");
           }
-          this.$router.push("/home");
         })
         .catch((error) => console.log(error));
     },

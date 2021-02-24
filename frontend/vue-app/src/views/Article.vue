@@ -1,7 +1,10 @@
 <template>
   <div>
     <Hdr />
-    <div id="articleContent">
+    <div v-if="this.articleUserId == null" id="noArticle">
+      <h1>L'article recherché n'existe pas</h1>
+    </div>
+    <div v-if="this.articleUserId != null" id="articleContent">
       <DeleteButton v-show="isOwnerModal" />
       <ModifyButton v-show="isOwnerModal" />
       <Article />
@@ -36,7 +39,7 @@ export default {
     // deleteCommentButton,
   },
   data: function () {
-    return { isOwnerModal: false };
+    return { isOwnerModal: false, articleUserId: null };
   },
   mounted() {
     this.isOwner();
@@ -79,6 +82,9 @@ export default {
 }
 #comment {
   margin-top: 10px;
+}
+#noArticle {
+  text-align: center;
 }
 </style>
 
