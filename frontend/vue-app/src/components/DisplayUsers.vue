@@ -25,8 +25,8 @@ export default {
     };
   },
   mounted() {
-    const isAdmin = JSON.parse(localStorage.getItem("user"));
-    if (isAdmin.isAdmin == true) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user.isAdmin == true) {
       this.showModal = true;
       this.displayUsers();
     } else {
@@ -35,11 +35,15 @@ export default {
   },
   methods: {
     displayUsers() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      let header = {
+        headers: {
+          Authorization: "Bearer " + user.token,
+        },
+      };
       axios
-        .get("http://localhost:3000/api/auth/users/")
-        .then(
-          (response) => ((this.users = response.data), console.log(this.users))
-        )
+        .get("http://localhost:3000/api/auth/users/", header)
+        .then((response) => (this.users = response.data))
         .catch((error) => console.log(error));
     },
     onButtonSelected(event) {

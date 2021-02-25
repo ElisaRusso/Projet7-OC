@@ -48,7 +48,6 @@ export default {
 div {
   border: solid 3px;
   max-width: 60%;
-  // text-align: center;
   min-width: 40%;
 }
 
