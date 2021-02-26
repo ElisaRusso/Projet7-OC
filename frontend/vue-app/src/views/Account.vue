@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div>
-      <Hdr />
-      Adresse e-mail: {{ this.user.email }}
+    <Hdr />
+    <div id="info">
+      <div>Adresse e-mail: {{ this.user.email }}</div>
+      <div>Nom d'utilisateur: {{ this.user.username }}</div>
     </div>
-    <div>Nom d'utilisateur: {{ this.user.username }}</div>
     <div>
       <DisplayUsers />
     </div>
@@ -37,3 +37,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang='scss'>
+#info {
+  text-align: center;
+}
+</style>

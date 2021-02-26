@@ -5,7 +5,7 @@
         type="article"
         id="article"
         name="article"
-        placeholder="Que voulez vous dire"
+        placeholder="Que voulez vous dire?"
         v-model="text"
       />
       <input
@@ -21,7 +21,7 @@
       {{ selectedFile.name }}
     </div>
     <div id="form-validate-button">
-      <input @click="createArticle" type="submit" value="Valider" />
+      <input @click="createArticle" type="submit" value="Publier" />
     </div>
   </div>
 </template>

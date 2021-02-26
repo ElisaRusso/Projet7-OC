@@ -10,7 +10,6 @@
       <Article />
       <div id="comment">
         <DisplayComment />
-        <!-- <deleteCommentButton /> -->
       </div>
       <CreateComment />
     </div>
@@ -26,7 +25,6 @@ import Hdr from "../components/Header.vue";
 import DisplayComment from "../components/DisplayComments";
 import axios from "axios";
 import CreateComment from "../components/CreateComment.vue";
-// import deleteCommentButton from "../components/DeleteComment";
 export default {
   name: "ArticleV",
   components: {
@@ -36,7 +34,6 @@ export default {
     ModifyButton,
     CreateComment,
     DisplayComment,
-    // deleteCommentButton,
   },
   data: function () {
     return { isOwnerModal: false, articleUserId: null };
