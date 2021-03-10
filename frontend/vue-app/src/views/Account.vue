@@ -40,6 +40,10 @@ export default {
 
 <style scoped lang='scss'>
 #info {
+  border: black solid 1px;
   text-align: center;
+  max-width: 30%;
+  margin: auto;
+  margin-top: 20px;
 }
 </style>

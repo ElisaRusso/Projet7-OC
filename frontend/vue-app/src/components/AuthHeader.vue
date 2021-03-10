@@ -2,7 +2,6 @@
   <header>
     <router-link to="/">Inscription</router-link>
     <router-link to="/login">Connexion</router-link>
-    <router-link to="/home"> Accueil </router-link>
   </header>
 </template>
 

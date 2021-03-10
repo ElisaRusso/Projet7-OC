@@ -80,6 +80,7 @@ export default {
 #userId {
   width: 100px;
   font-size: 25px;
+  margin-left: 15px;
 }
 ul {
   display: flex;
@@ -98,5 +99,6 @@ a {
 #articleContent {
   font-size: 20px;
   text-align: left;
+  margin-left: 30px;
 }
 </style>

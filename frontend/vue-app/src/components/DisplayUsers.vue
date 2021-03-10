@@ -4,7 +4,7 @@
       <div id="userId">
         {{ users.username }}
         <button class="deleteButton" @click="onButtonSelected" type="button">
-          Supprimer
+          <font-awesome-icon :icon="['fas', 'user-minus']" />
         </button>
       </div>
     </li>

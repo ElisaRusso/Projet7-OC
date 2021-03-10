@@ -6,17 +6,17 @@
           <div id="userId">{{ comments.user.username }}</div>
           <div id="commentContent">
             {{ comments.text }}
-            <!-- <deleteCommentButton /> -->
           </div>
-
-          <button
-            v-if="comments.user.id == user.userId || user.isAdmin == true"
-            class="deleteButton"
-            @click="deleteComment(comments.id)"
-            type="button"
-          >
-            Supprimer
-          </button>
+          <div id="delete">
+            <button
+              v-if="comments.user.id == user.userId || user.isAdmin == true"
+              class="deleteButton"
+              @click="deleteComment(comments.id)"
+              type="button"
+            >
+              <font-awesome-icon :icon="['fas', 'trash-alt']" />
+            </button>
+          </div>
         </div>
       </li>
     </ul>
@@ -71,6 +71,7 @@ export default {
 <style scoped lang="scss">
 #commentContent {
   margin-bottom: 15px;
+  margin-left: 15px;
 }
 li,
 ul {
@@ -78,19 +79,31 @@ ul {
 }
 ul {
   width: 800px;
-  margin: 0;
+  margin: auto;
+  padding: 0;
 }
 #userId {
   font-size: 20px;
+  margin-left: 10px;
   font-weight: bold;
 }
 #comments {
   border: 1px solid black;
-  margin: 10px;
+  margin-bottom: 10px;
 }
 
 #content {
   display: flex;
   justify-content: center;
+}
+#delete {
+  text-align: right;
+}
+
+@media screen and (max-width: 810px) {
+  ul {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 </style>

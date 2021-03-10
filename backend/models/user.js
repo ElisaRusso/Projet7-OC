@@ -6,11 +6,13 @@ const User = sequelize.define('User', {
     // Model attributes are defined here
     username: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.STRING,
@@ -22,5 +24,6 @@ const User = sequelize.define('User', {
     }
 }
 );
+// User.sync({ force: true });
 
 module.exports = User;

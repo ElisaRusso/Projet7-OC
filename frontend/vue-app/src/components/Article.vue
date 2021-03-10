@@ -1,11 +1,11 @@
 <template>
-  <span>
+  <div id="article">
     <div>
       <p id="username">{{ user.username }}</p>
       <p id="articleContent">{{ articles.text }}</p>
       <img :src="articles.imageUrl" />
     </div>
-  </span>
+  </div>
 </template>
 
 <script>
@@ -45,13 +45,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-div {
+#article {
   border: solid 3px;
   max-width: 60%;
   min-width: 40%;
 }
 
-span {
+#article {
   display: flex;
   justify-content: center;
 }
@@ -61,9 +61,10 @@ img {
 #username {
   font-size: 25px;
   font-weight: bold;
+  margin-left: 15px;
 }
 #articleContent {
   font-size: 20px;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 </style>

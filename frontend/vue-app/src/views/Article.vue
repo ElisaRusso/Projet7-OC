@@ -5,13 +5,20 @@
       <h1>L'article recherché n'existe pas</h1>
     </div>
     <div v-if="this.articleUserId != null" id="articleContent">
-      <DeleteButton v-show="isOwnerModal" />
-      <ModifyButton v-show="isOwnerModal" />
-      <Article />
-      <div id="comment">
-        <DisplayComment />
+      <div id="modify">
+        <DeleteButton v-show="isOwnerModal" />
+
+        <ModifyButton v-show="isOwnerModal" />
       </div>
-      <CreateComment />
+      <div id="content">
+        <Article id="article" />
+        <div id="commentsList">
+          <div id="comment">
+            <DisplayComment />
+          </div>
+          <CreateComment />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -77,11 +84,37 @@ export default {
 #articleContent {
   margin-top: 40px;
 }
-#comment {
-  margin-top: 10px;
-}
 #noArticle {
   text-align: center;
+}
+#modify {
+  text-align: right;
+  margin-bottom: 10px;
+}
+#content {
+  display: flex;
+}
+#commentsList {
+  width: 50%;
+}
+
+#article {
+  margin: auto;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+@media screen and (max-width: 810px) {
+  #content {
+    flex-direction: column;
+  }
+  #commentsList {
+    width: 100%;
+  }
+  #article {
+    max-width: 100%;
+    min-width: none;
+  }
 }
 </style>
 

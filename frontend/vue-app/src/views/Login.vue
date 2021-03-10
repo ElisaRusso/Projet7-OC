@@ -2,7 +2,8 @@
   <div id="content">
     <AuthHeader />
 
-    <form id="login">
+    <form id="login" @submit.prevent="login">
+      <img src="@/assets/icon-left-font2.png" />
       <h1>Connexion</h1>
       <div>
         <label for="email">Email: </label>
@@ -26,9 +27,12 @@
         />
       </div>
       <div id="form-validate-button">
-        <input @click="login" type="submit" value="Valider" />
+        <input type="submit" value="Valider" />
       </div>
     </form>
+    <div id="message" v-show="message">
+      Adresse e-mail ou mot de passe incorrecte
+    </div>
   </div>
 </template>
 
@@ -46,6 +50,7 @@ export default {
     return {
       emailValue: "",
       passwordValue: "",
+      message: false,
     };
   },
   methods: {
@@ -63,7 +68,11 @@ export default {
             this.$router.push("/home");
           }
         })
-        .catch((error) => console.log(error));
+        .catch(
+          (error) => (
+            console.log(error), (this.message = true), (this.passwordValue = "")
+          )
+        );
     },
   },
   mounted() {
@@ -99,5 +108,15 @@ div {
 #content {
   width: 100%;
   margin: auto;
+}
+#message {
+  color: red;
+  margin: auto;
+  text-align: center;
+  margin-top: 10px;
+}
+
+img {
+  width: 40%;
 }
 </style>

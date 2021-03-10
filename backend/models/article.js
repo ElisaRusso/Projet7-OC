@@ -1,4 +1,3 @@
-// const sequelize = require('../db.config');
 const User = require('../models/user');
 const { Sequelize, DataTypes, Op } = require('sequelize');
 const sequelize = require('../db.config')
@@ -27,6 +26,7 @@ User.hasMany(Article, {
 
 
 Article.belongsTo(User, { as: 'user' });
+// Article.sync({ force: true });
 
 module.exports = Article;
 

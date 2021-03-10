@@ -3,6 +3,17 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Article = require('../models/article');
 const Comment = require('../models/comment');
+const complexity = require('complexity');
+
+const options = {
+    uppercase: 1,
+    lowercase: 1,
+    special: 1,
+    digit: 1,
+    min: 8
+}
+
+const RegEx = complexity.create(options)
 
 
 exports.signup = (req, res, next) => {
@@ -16,12 +27,14 @@ exports.signup = (req, res, next) => {
                 password: hash,
                 isAdmin: false,
             });
-
-            user.save()
-                .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-                .catch(error => res.status(400).json({ error }));
-
-
+            if (complexity.check(req.body.password, options)) {
+                user.save()
+                    .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+                    .catch(error => res.status(400).json({ error }));
+            }
+            else {
+                throw 'Mot de passe trop simple'
+            }
 
         })
         .catch(error => res.status(500).json({ error }));

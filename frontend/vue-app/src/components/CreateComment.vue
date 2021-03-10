@@ -1,5 +1,5 @@
 <template>
-  <div id="content">
+  <form id="content" @submit.prevent="createComment">
     <div id="articleContent">
       <input
         type="article"
@@ -10,9 +10,9 @@
       />
     </div>
     <div id="form-validate-button">
-      <input @click="createComment" type="submit" value="Valider" />
+      <button type="submit">Commenter</button>
     </div>
-  </div>
+  </form>
 </template>
 
 
@@ -39,7 +39,6 @@ export default {
         },
       })
         .then(() => {
-          console.log("Commentaire créé!");
           location.reload();
         })
         .catch((error) => console.log(error));
@@ -51,7 +50,7 @@ export default {
 <style scoped lang="scss">
 #article {
   height: 40px;
-  width: 50%;
+  width: 60%;
 }
 #content {
   display: flex;
@@ -62,5 +61,22 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+button {
+  background-color: #e77d88;
+}
+#form-validate-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#form-validate-button > button {
+  height: 40px;
+  width: 90px;
+  text-align: center;
+}
+@media screen and (max-width: 810px) {
+  #article {
+    width: 80%;
+  }
 }
 </style>

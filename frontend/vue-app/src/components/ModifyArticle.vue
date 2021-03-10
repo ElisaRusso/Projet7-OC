@@ -3,6 +3,9 @@
     <button class="modifyButton" @click="modifyingContent = true" type="button">
       Modifier
     </button>
+    <button class="modifyButton" @click="modify" type="button">
+      Modifier2
+    </button>
     <div v-show="modifyingContent" id="articleContent">
       <label for="password">Modifiez votre post: </label>
       <input
@@ -12,7 +15,6 @@
         placeholder="Ecrivez votre post"
         v-model="text"
       />
-
       <input
         ref="fileInput"
         style="display: none"
@@ -66,6 +68,9 @@ export default {
     },
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
+    },
+    modify() {
+      this.$emit("modify-area");
     },
   },
 };

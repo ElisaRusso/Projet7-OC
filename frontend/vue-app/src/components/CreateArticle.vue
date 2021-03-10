@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="content">
     <div id="articleContent">
       <input
         type="article"
@@ -16,12 +16,14 @@
         @change="onFileSelected"
       />
       <button id="addFileButton" @click="$refs.fileInput.click()">
-        Ajouter une image
+        <font-awesome-icon :icon="['fas', 'images']" size="2x" />
       </button>
       {{ selectedFile.name }}
     </div>
     <div id="form-validate-button">
-      <input @click="createArticle" type="submit" value="Publier" />
+      <button id="form-validate-button" @click="createArticle" type="submit">
+        Publier
+      </button>
     </div>
   </div>
 </template>
@@ -69,28 +71,45 @@ export default {
 
 <style scoped lang="scss">
 #article {
-  width: 30%;
+  width: 60%;
   font-size: 20px;
 }
 
 #articleContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 40px;
-  text-align: center;
 }
 #form-validate-button {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
+#form-validate-button > button {
+  align-items: center;
+  height: 40px;
+  width: 70px;
+}
+button {
+  background-color: #e77d88;
+  font-weight: bold;
+}
+
 #content {
-  display: flex;
-  justify-content: center;
+  border: solid black 1px;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 10px;
 }
+
 #article,
 #addFileButton {
   height: 50px;
 }
 #addFileButton {
+  background-color: #e77d88;
   margin-left: 10px;
 }
 </style>
