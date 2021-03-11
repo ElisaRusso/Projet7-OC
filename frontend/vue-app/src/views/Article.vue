@@ -100,7 +100,6 @@ export default {
 
 #article {
   margin: auto;
-  min-width: 300px;
   max-width: 700px;
 }
 

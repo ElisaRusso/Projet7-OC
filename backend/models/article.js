@@ -10,7 +10,10 @@ const Article = sequelize.define('Article', {
     },
     text: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [1, 150]
+        }
     },
     imageUrl: {
         type: DataTypes.STRING,

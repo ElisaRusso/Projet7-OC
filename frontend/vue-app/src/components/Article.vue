@@ -1,10 +1,8 @@
 <template>
   <div id="article">
-    <div>
-      <p id="username">{{ user.username }}</p>
-      <p id="articleContent">{{ articles.text }}</p>
-      <img :src="articles.imageUrl" />
-    </div>
+    <p id="username">{{ user.username }}</p>
+    <p id="articleContent">{{ articles.text }}</p>
+    <img :src="articles.imageUrl" />
   </div>
 </template>
 
@@ -46,15 +44,9 @@ export default {
 
 <style scoped lang="scss">
 #article {
-  border: solid 3px;
-  max-width: 60%;
-  min-width: 40%;
+  border: solid 3px black;
 }
 
-#article {
-  display: flex;
-  justify-content: center;
-}
 img {
   width: 100%;
 }
@@ -62,9 +54,12 @@ img {
   font-size: 25px;
   font-weight: bold;
   margin-left: 15px;
+  word-break: break-all;
 }
 #articleContent {
+  max-width: 100%;
   font-size: 20px;
   margin-left: 30px;
+  word-break: break-all;
 }
 </style>

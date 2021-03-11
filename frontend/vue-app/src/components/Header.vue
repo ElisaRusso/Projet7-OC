@@ -43,11 +43,6 @@ header {
 }
 a > img {
   width: 100%;
-}
-</style>
-<style lang="scss">
-body {
-  width: 100%;
-  margin: 0px;
+  min-width: 120px;
 }
 </style>

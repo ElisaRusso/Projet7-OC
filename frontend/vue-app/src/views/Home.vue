@@ -78,9 +78,10 @@ export default {
   margin-bottom: 10px;
 }
 #userId {
-  width: 100px;
+  text-align: left;
   font-size: 25px;
   margin-left: 15px;
+  word-wrap: break-word;
 }
 ul {
   display: flex;
@@ -100,5 +101,6 @@ a {
   font-size: 20px;
   text-align: left;
   margin-left: 30px;
+  word-wrap: break-word;
 }
 </style>

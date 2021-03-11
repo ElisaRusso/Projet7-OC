@@ -1,12 +1,13 @@
 <template>
   <div id="content">
     <div id="articleContent">
-      <input
+      <textarea
         type="article"
         id="article"
         name="article"
         placeholder="Que voulez vous dire?"
         v-model="text"
+        maxlength="150"
       />
       <input
         ref="fileInput"
@@ -104,9 +105,12 @@ button {
   margin-top: 10px;
 }
 
-#article,
 #addFileButton {
   height: 50px;
+}
+#article {
+  resize: none;
+  height: 70px;
 }
 #addFileButton {
   background-color: #e77d88;
