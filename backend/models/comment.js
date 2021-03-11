@@ -29,6 +29,6 @@ Article.hasMany(Comment, {
 
 Comment.belongsTo(User, { as: 'user' });
 Comment.belongsTo(Article, { as: 'article' });
-// Comment.sync({ force: true });
+
 
 module.exports = Comment;

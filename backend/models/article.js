@@ -26,7 +26,7 @@ User.hasMany(Article, {
 
 
 Article.belongsTo(User, { as: 'user' });
-// Article.sync({ force: true });
+
 
 module.exports = Article;
 
