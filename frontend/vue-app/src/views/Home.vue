@@ -4,15 +4,15 @@
     <createArticle />
     <ul>
       <li v-for="(article, i) in articles" :key="i">
-        <router-link :to="'/article/' + article.id">
-          <div id="articles">
+        <div id="articles">
+          <router-link :to="'/article/' + article.id">
             <div id="userId">{{ articles[i].user.username }}</div>
             <div id="articleContent">
               {{ articles[i].text }}
             </div>
             <div><img id="articleImage" :src="articles[i].imageUrl" /></div>
-          </div>
-        </router-link>
+          </router-link>
+        </div>
       </li>
     </ul>
   </div>
@@ -92,6 +92,7 @@ li {
 }
 a {
   text-decoration: none;
+  color: black;
 }
 
 #articleImage {
