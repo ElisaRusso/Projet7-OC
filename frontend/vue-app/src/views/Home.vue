@@ -74,7 +74,7 @@ export default {
   border: solid 2px;
   font-weight: bold;
   color: black;
-  width: 50%;
+  width: 45%;
   margin: auto;
   margin-bottom: 10px;
 }
@@ -103,7 +103,7 @@ a {
 }
 #articleContent {
   font-size: 35px;
-  text-align: left;
+  text-align: justify;
   margin: 30px;
   margin-left: 60px;
   word-wrap: break-word;
@@ -112,6 +112,18 @@ a {
 @media screen and (max-width: 900px) {
   #articles {
     width: 90%;
+  }
+}
+@media screen and (max-width: 450px) {
+  #articleContent {
+    font-size: 15px;
+    max-height: 150px;
+    width: 100%;
+    margin-left: 0;
+  }
+  #userId {
+    font-size: 25px;
+    margin-left: 0;
   }
 }
 </style>

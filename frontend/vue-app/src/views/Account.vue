@@ -40,6 +40,7 @@ export default {
 
 <style scoped lang='scss'>
 #info {
+  font-size: 20px;
   border: black solid 1px;
   text-align: center;
   max-width: 30%;

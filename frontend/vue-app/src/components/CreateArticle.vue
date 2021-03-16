@@ -129,4 +129,10 @@ button {
   background-color: #e77d88;
   margin-left: 10px;
 }
+
+@media screen and (max-width: 900px) {
+  #content {
+    max-width: 90%;
+  }
+}
 </style>
