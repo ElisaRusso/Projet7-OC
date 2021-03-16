@@ -43,6 +43,24 @@ header {
 }
 a > img {
   width: 100%;
-  min-width: 120px;
+  min-width: 180px;
+}
+.account {
+  min-width: 90px;
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+  }
+  a {
+    margin: 0;
+  }
+  a > img {
+    width: 100%;
+    min-width: 100px;
+  }
 }
 </style>

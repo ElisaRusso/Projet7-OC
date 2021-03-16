@@ -11,11 +11,11 @@
           <ModifyButton v-show="isOwnerModal" @modify-area="update" />
         </div>
         <Article id="article" v-show="modifying" />
-        <div id="commentsList">
+        <div id="commentsList" v-show="modifying">
           <div id="comment">
-            <DisplayComment v-show="modifying" />
+            <DisplayComment />
           </div>
-          <CreateComment v-show="modifying" />
+          <CreateComment />
         </div>
       </div>
     </div>
@@ -102,6 +102,7 @@ export default {
 }
 #content {
   display: flex;
+  justify-content: center;
 }
 #commentsList {
   width: 50%;

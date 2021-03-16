@@ -89,10 +89,16 @@ export default {
 }
 #articleContent {
   text-align: center;
+  width: 1000px;
 }
 #article {
-  width: 50%;
+  width: 80%;
   height: 40px;
   resize: none;
+}
+@media screen and (max-width: 810px) {
+  #articleContent {
+    width: 100%;
+  }
 }
 </style>

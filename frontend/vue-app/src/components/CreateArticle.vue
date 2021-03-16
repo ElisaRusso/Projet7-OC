@@ -8,6 +8,7 @@
         placeholder="Que voulez vous dire?"
         v-model="text"
         maxlength="150"
+        minlength="1"
       />
       <input
         ref="fileInput"
@@ -40,7 +41,6 @@ export default {
       selectedFile: "",
     };
   },
-
   methods: {
     createArticle() {
       const user = JSON.parse(localStorage.getItem("user"));
