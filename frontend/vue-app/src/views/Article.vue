@@ -5,18 +5,17 @@
       <h1>L'article recherché n'existe pas</h1>
     </div>
     <div v-if="this.articleUserId != null" id="articleContent">
-      <div id="modify">
-        <DeleteButton v-show="isOwnerModal" />
-
-        <ModifyButton v-show="isOwnerModal" />
-      </div>
       <div id="content">
-        <Article id="article" />
+        <div id="modify">
+          <DeleteButton v-show="isOwnerModal" />
+          <ModifyButton v-show="isOwnerModal" @modify-area="update" />
+        </div>
+        <Article id="article" v-show="modifying" />
         <div id="commentsList">
           <div id="comment">
-            <DisplayComment />
+            <DisplayComment v-show="modifying" />
           </div>
-          <CreateComment />
+          <CreateComment v-show="modifying" />
         </div>
       </div>
     </div>
@@ -43,7 +42,12 @@ export default {
     DisplayComment,
   },
   data: function () {
-    return { isOwnerModal: false, articleUserId: null };
+    return {
+      isOwnerModal: false,
+      articleUserId: null,
+      text: null,
+      modifying: true,
+    };
   },
   mounted() {
     this.isOwner();
@@ -56,6 +60,7 @@ export default {
         .get("http://localhost:3000/api/articles/" + urlId)
         .then(
           (response) => (
+            (this.text = response.data.text),
             (this.articleUserId = response.data.userId),
             this.isOwnerCheck(this.articleUserId)
           )
@@ -76,6 +81,9 @@ export default {
         this.isOwnerModal = false;
       }
     },
+    update() {
+      this.modifying = !this.modifying;
+    },
   },
 };
 </script>
@@ -88,8 +96,9 @@ export default {
   text-align: center;
 }
 #modify {
-  text-align: right;
+  text-align: left;
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 #content {
   display: flex;

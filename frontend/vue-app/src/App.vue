@@ -12,5 +12,9 @@ export default {
 };
 </script>
 <style lang="scss">
+button {
+  background-color: #e77d88;
+  font-weight: bold;
+}
 </style>
 

@@ -1,19 +1,15 @@
 <template>
   <div>
-    <button class="modifyButton" @click="modifyingContent = true" type="button">
-      Modifier
-    </button>
-    <button class="modifyButton" @click="modify" type="button">
-      Modifier2
-    </button>
+    <button class="modifyButton" @click="modify" type="button">Modifier</button>
+
     <div v-show="modifyingContent" id="articleContent">
-      <label for="password">Modifiez votre post: </label>
-      <input
+      <h1>Modifiez votre post</h1>
+      <textarea
         type="article"
         id="article"
         name="user_article"
-        placeholder="Ecrivez votre post"
         v-model="text"
+        maxlength="150"
       />
       <input
         ref="fileInput"
@@ -23,13 +19,13 @@
         @change="onFileSelected"
       />
       <button id="addFileButton" @click="$refs.fileInput.click()">
-        Ajouter une image
+        <font-awesome-icon :icon="['fas', 'images']" size="2x" />
       </button>
       {{ selectedFile.name }}
-    </div>
-
-    <div v-show="modifyingContent" id="form-validate-button">
-      <input @click="modifyArticle" type="submit" value="Valider" />
+      <div id="form-validate-button">
+        <button @click="cancel" type="button">Annuler</button>
+        <button @click="modifyArticle" type="submit">Valider</button>
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +41,13 @@ export default {
       modifyingContent: false,
       selectedFile: "",
     };
+  },
+  mounted() {
+    const urlId = this.$route.params.id;
+    axios
+      .get("http://localhost:3000/api/articles/" + urlId)
+      .then((response) => (this.text = response.data.text))
+      .catch((error) => console.log(error));
   },
   methods: {
     modifyArticle() {
@@ -69,9 +72,27 @@ export default {
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
     },
+    cancel() {
+      location.reload();
+    },
     modify() {
+      this.modifyingContent = !this.modifyingContent;
       this.$emit("modify-area");
     },
   },
 };
 </script>
+
+<style scoped lang="scss">
+#form-validate-button {
+  margin: 20px;
+}
+#articleContent {
+  text-align: center;
+}
+#article {
+  width: 50%;
+  height: 40px;
+  resize: none;
+}
+</style>
