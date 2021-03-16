@@ -70,16 +70,17 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
+  border-radius: 15px;
   border: solid 2px;
   font-weight: bold;
   color: black;
-  width: 30%;
+  width: 50%;
   margin: auto;
   margin-bottom: 10px;
 }
 #userId {
   text-align: left;
-  font-size: 25px;
+  font-size: 50px;
   margin-left: 15px;
   word-wrap: break-word;
 }
@@ -89,6 +90,8 @@ ul {
 }
 li {
   list-style: none;
+  margin-bottom: 40px;
+  margin-left: -40px;
 }
 a {
   text-decoration: none;
@@ -99,9 +102,16 @@ a {
   width: 100%;
 }
 #articleContent {
-  font-size: 20px;
+  font-size: 35px;
   text-align: left;
-  margin-left: 30px;
+  margin: 30px;
+  margin-left: 60px;
   word-wrap: break-word;
+}
+
+@media screen and (max-width: 900px) {
+  #articles {
+    width: 90%;
+  }
 }
 </style>

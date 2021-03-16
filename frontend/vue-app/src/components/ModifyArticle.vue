@@ -4,24 +4,26 @@
 
     <div v-show="modifyingContent" id="articleContent">
       <h1>Modifiez votre post</h1>
-      <textarea
-        type="article"
-        id="article"
-        name="user_article"
-        v-model="text"
-        maxlength="150"
-      />
-      <input
-        ref="fileInput"
-        style="display: none"
-        type="file"
-        name="image"
-        @change="onFileSelected"
-      />
-      <button id="addFileButton" @click="$refs.fileInput.click()">
-        <font-awesome-icon :icon="['fas', 'images']" size="2x" />
-      </button>
-      {{ selectedFile.name }}
+      <div id="contentArea">
+        <textarea
+          type="article"
+          id="article"
+          name="user_article"
+          v-model="text"
+          maxlength="150"
+        />
+        <input
+          ref="fileInput"
+          style="display: none"
+          type="file"
+          name="image"
+          @change="onFileSelected"
+        />
+        <button id="addFileButton" @click="$refs.fileInput.click()">
+          <font-awesome-icon :icon="['fas', 'images']" size="2x" />
+        </button>
+        {{ selectedFile.name }}
+      </div>
       <div id="form-validate-button">
         <button @click="cancel" type="button">Annuler</button>
         <button @click="modifyArticle" type="submit">Valider</button>
@@ -84,21 +86,38 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#form-validate-button {
-  margin: 20px;
+#contentArea {
+  display: flex;
+  justify-content: center;
+}
+#form-validate-button > button {
+  margin: 5px;
 }
 #articleContent {
   text-align: center;
   width: 1000px;
+  margin-top: 100px;
 }
 #article {
   width: 80%;
   height: 40px;
   resize: none;
 }
+@media screen and (max-width: 1010px) {
+  #articleContent {
+    max-width: 800px;
+  }
+}
+
 @media screen and (max-width: 810px) {
   #articleContent {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #article {
+    height: 70px;
   }
 }
 </style>

@@ -113,6 +113,8 @@ export default {
   max-width: 700px;
 }
 
+@media screen and (max-width: 1000px) {
+}
 @media screen and (max-width: 810px) {
   #content {
     flex-direction: column;

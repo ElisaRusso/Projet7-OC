@@ -9,6 +9,7 @@
         v-model="text"
         maxlength="150"
         minlength="1"
+        @input="check"
       />
       <input
         ref="fileInput"
@@ -23,7 +24,12 @@
       {{ selectedFile.name }}
     </div>
     <div id="form-validate-button">
-      <button id="form-validate-button" @click="createArticle" type="submit">
+      <button
+        id="form-validate-button"
+        @click="createArticle"
+        type="submit"
+        :disabled="isDisabled"
+      >
         Publier
       </button>
     </div>
@@ -39,8 +45,10 @@ export default {
     return {
       text: "",
       selectedFile: "",
+      isDisabled: true,
     };
   },
+  mounted() {},
   methods: {
     createArticle() {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -65,6 +73,11 @@ export default {
     },
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
+    },
+    check() {
+      if (this.text.length >= 1) {
+        this.isDisabled = false;
+      }
     },
   },
 };
