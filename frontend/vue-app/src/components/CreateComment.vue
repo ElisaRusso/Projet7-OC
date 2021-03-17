@@ -8,6 +8,7 @@
         placeholder="Ecrivez votre commentaire"
         v-model="text"
         @input="checkLength"
+        accept="image/*"
       />
     </div>
     <div id="form-validate-button">

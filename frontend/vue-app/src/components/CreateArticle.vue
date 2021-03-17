@@ -16,6 +16,7 @@
         type="file"
         name="image"
         @change="onFileSelected"
+        accept="image/*"
       />
       <button id="addFileButton" @click="$refs.fileInput.click()">
         <font-awesome-icon :icon="['fas', 'images']" size="2x" />
