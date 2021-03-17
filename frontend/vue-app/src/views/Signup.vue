@@ -38,14 +38,14 @@
       <div class="input_container" v-show="showModal">
         <ul>
           <li v-bind:class="{ is_valid: contains_eight_characters }">
-            8 Characters
+            8 Caractères minimum
           </li>
-          <li v-bind:class="{ is_valid: contains_number }">Contains Number</li>
+          <li v-bind:class="{ is_valid: contains_number }">1 Chiffre</li>
           <li v-bind:class="{ is_valid: contains_uppercase }">
-            Contains Uppercase
+            1 Caractère en majuscule
           </li>
           <li v-bind:class="{ is_valid: contains_special_character }">
-            Contains Special Character
+            1 Caractère spécial
           </li>
         </ul>
 

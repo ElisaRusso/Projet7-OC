@@ -15,6 +15,7 @@ export default {
 button {
   background-color: #e77d88;
   font-weight: bold;
+  border-radius: 10px;
 }
 </style>
 

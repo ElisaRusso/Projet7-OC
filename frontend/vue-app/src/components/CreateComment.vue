@@ -7,10 +7,11 @@
         name="article"
         placeholder="Ecrivez votre commentaire"
         v-model="text"
+        @input="checkLength"
       />
     </div>
     <div id="form-validate-button">
-      <button type="submit">Commenter</button>
+      <button type="submit" :disabled="isDisabled">Commenter</button>
     </div>
   </form>
 </template>
@@ -23,6 +24,7 @@ export default {
   data: function () {
     return {
       text: "",
+      isDisabled: true,
     };
   },
   methods: {
@@ -42,6 +44,14 @@ export default {
           location.reload();
         })
         .catch((error) => console.log(error));
+    },
+    checkLength() {
+      if (this.text.length >= 1) {
+        this.isDisabled = false;
+      }
+      if (this.text.length < 1) {
+        this.isDisabled = true;
+      }
     },
   },
 };

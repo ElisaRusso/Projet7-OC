@@ -53,7 +53,7 @@ img {
 #username {
   font-size: 25px;
   font-weight: bold;
-  margin-left: 15px;
+  margin: 15px;
   word-break: break-all;
 }
 #articleContent {

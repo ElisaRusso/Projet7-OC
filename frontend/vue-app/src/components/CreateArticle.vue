@@ -8,7 +8,6 @@
         placeholder="Que voulez vous dire?"
         v-model="text"
         maxlength="150"
-        minlength="1"
         @input="check"
       />
       <input
@@ -66,7 +65,6 @@ export default {
       axios
         .post("http://localhost:3000/api/articles", myForm, config)
         .then(() => {
-          console.log("Post créé!");
           location.reload();
         })
         .catch((error) => console.log(error));
@@ -77,6 +75,9 @@ export default {
     check() {
       if (this.text.length >= 1) {
         this.isDisabled = false;
+      }
+      if (this.text.length < 1) {
+        this.isDisabled = true;
       }
     },
   },
@@ -113,6 +114,7 @@ button {
 
 #content {
   border: solid black 1px;
+  border-radius: 15px;
   max-width: 50%;
   margin: auto;
   margin-top: 10px;

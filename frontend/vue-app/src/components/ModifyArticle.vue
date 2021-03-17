@@ -62,8 +62,11 @@ export default {
           Authorization: "Bearer " + user.token,
         },
       };
+      if (this.selectedFile != "") {
+        myForm.append("imageUrl", this.selectedFile);
+      }
       myForm.append("text", this.text);
-      myForm.append("imageUrl", this.selectedFile);
+
       axios
         .put("http://localhost:3000/api/articles/" + urlId, myForm, config)
         .then(() => {

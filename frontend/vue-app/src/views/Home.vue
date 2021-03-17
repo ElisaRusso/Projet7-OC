@@ -81,7 +81,7 @@ export default {
 #userId {
   text-align: left;
   font-size: 50px;
-  margin-left: 15px;
+  margin: 15px;
   word-wrap: break-word;
 }
 ul {

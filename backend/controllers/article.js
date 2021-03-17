@@ -6,24 +6,26 @@ const fs = require('fs');
 
 
 exports.createArticle = (req, res, next) => {
-    const articleObject = { ...req.body };
-    if (req.file) {
-        const article = new Article({
-            ...articleObject,
-            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-        });
-        saveArticle(article);
-    }
-    else {
-        const article = new Article({
-            ...articleObject,
-        });
-        saveArticle(article);
-    }
-    function saveArticle(article) {
-        article.save()
-            .then(() => res.status(201).json({ message: 'Article créé !' }))
-            .catch(error => res.status(400).json({ error }))
+    if (req.body) {
+        const articleObject = { ...req.body };
+        if (req.file) {
+            const article = new Article({
+                ...articleObject,
+                imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+            });
+            saveArticle(article);
+        }
+        else {
+            const article = new Article({
+                ...articleObject,
+            });
+            saveArticle(article);
+        }
+        function saveArticle(article) {
+            article.save()
+                .then(() => res.status(201).json({ message: 'Article créé !' }))
+                .catch(error => res.status(400).json({ error }))
+        }
     }
 
 
