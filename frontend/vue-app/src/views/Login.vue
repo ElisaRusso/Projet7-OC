@@ -27,7 +27,7 @@
         />
       </div>
       <div id="form-validate-button">
-        <input type="submit" value="Valider" />
+        <button type="submit">Valider</button>
       </div>
     </form>
     <div id="message" v-show="message">
