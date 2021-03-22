@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
         const token = req.headers.authorization.split(' ')[1];
         const decodedToken = jwt.verify(token, process.env.TOKEN);
         const userId = decodedToken.userId;
+
         let isAdminBool = null;
         User.findOne({
             where: {
@@ -17,6 +18,7 @@ module.exports = (req, res, next) => {
         })
             .then(user => { isAdminBool = user.isAdmin })
             .catch(error => res.status(400).json({ error }));
+
         Article.findOne({
             where: {
                 id: req.params.id
@@ -30,6 +32,7 @@ module.exports = (req, res, next) => {
                 }
             })
             .catch(error => res.status(400).json({ error }));
+
 
     } catch {
         res.status(401).json({

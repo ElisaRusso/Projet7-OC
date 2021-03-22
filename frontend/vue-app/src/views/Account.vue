@@ -8,6 +8,9 @@
     <div>
       <DisplayUsers />
     </div>
+    <button id="deleteButton" @click="deleteAccount" type="button">
+      Supprimer mon compte
+    </button>
   </div>
 </template>
 
@@ -35,6 +38,20 @@ export default {
       .then((response) => (this.user = response.data))
       .catch((error) => console.log(error));
   },
+  methods: {
+    deleteAccount() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      let header = {
+        headers: {
+          Authorization: "Bearer " + user.token,
+        },
+      };
+      axios
+        .delete("http://localhost:3000/api/auth/users/" + this.user.id, header)
+        .then(() => ((location.href = "/"), localStorage.removeItem("user")))
+        .catch((error) => console.log(error));
+    },
+  },
 };
 </script>
 
@@ -43,8 +60,14 @@ export default {
   font-size: 20px;
   border: black solid 1px;
   text-align: center;
+  min-width: 140px;
   max-width: 30%;
   margin: auto;
+  margin-top: 20px;
+  word-break: break-all;
+}
+#deleteButton {
+  float: right;
   margin-top: 20px;
 }
 </style>

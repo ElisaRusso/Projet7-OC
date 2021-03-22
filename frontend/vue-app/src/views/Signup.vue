@@ -33,6 +33,7 @@
           placeholder="********"
           v-model="passwordValue"
           @input="checkPassword"
+          autocomplete="on"
         />
       </div>
       <div class="input_container" v-show="showModal">

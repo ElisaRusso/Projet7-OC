@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
             }
         })
             .then(user => {
-                if (user.isAdmin == true) {
+                if (user.isAdmin == true || user.id == userId) {
                     next();
                 }
                 else {

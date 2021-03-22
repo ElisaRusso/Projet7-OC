@@ -4,6 +4,7 @@
       <div id="userId">
         {{ users.username }}
         <button class="deleteButton" @click="onButtonSelected" type="button">
+          Supprimer
           <font-awesome-icon :icon="['fas', 'user-minus']" />
         </button>
       </div>
@@ -48,7 +49,6 @@ export default {
     },
     onButtonSelected(event) {
       this.selectedButton = event.target.previousSibling.textContent.trim();
-      console.log(this.selectedButton);
       this.checkUser();
     },
     checkUser() {
@@ -58,8 +58,14 @@ export default {
         .catch((error) => console.log(error));
     },
     deleteUser() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      let header = {
+        headers: {
+          Authorization: "Bearer " + user.token,
+        },
+      };
       axios
-        .delete("http://localhost:3000/api/auth/users/" + this.user)
+        .delete("http://localhost:3000/api/auth/users/" + this.user, header)
         .then(() => location.reload())
         .catch((error) => console.log(error));
     },
@@ -70,6 +76,17 @@ export default {
 <style scoped lang="scss">
 ul {
   list-style: none;
+  margin-left: -16px;
+}
+#userId {
   text-align: center;
+  width: 100px;
+  border: 1px solid;
+}
+li {
+  margin-top: 20px;
+}
+button {
+  width: 80px;
 }
 </style>
