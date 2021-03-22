@@ -7,7 +7,7 @@
     <div v-if="this.articleUserId != null" id="articleContent">
       <div id="content">
         <div id="modify">
-          <DeleteButton v-show="isOwnerModal" />
+          <DeleteButton v-show="isOwnerModal" id="deleteButton" />
           <ModifyButton v-show="isOwnerModal" @modify-area="update" />
         </div>
         <Article id="article" v-show="modifying" />
@@ -110,6 +110,9 @@ export default {
 #article {
   margin: auto;
   max-width: 700px;
+}
+#deleteButton {
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1000px) {
