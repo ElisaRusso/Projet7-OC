@@ -96,7 +96,6 @@ export default {
   text-align: center;
 }
 #modify {
-  text-align: left;
   margin-bottom: 10px;
   margin-left: 10px;
 }
@@ -125,6 +124,11 @@ export default {
   #article {
     max-width: 100%;
     min-width: none;
+  }
+  #modify {
+    margin: auto;
+    text-align: center;
+    margin-bottom: 10px;
   }
 }
 </style>
