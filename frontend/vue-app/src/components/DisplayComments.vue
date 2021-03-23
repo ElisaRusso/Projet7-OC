@@ -35,6 +35,7 @@ export default {
     };
   },
   mounted() {
+    //Récupération des commentaires liés à un post
     const urlId = this.$route.params.id;
     this.user = JSON.parse(localStorage.getItem("user"));
     axios({

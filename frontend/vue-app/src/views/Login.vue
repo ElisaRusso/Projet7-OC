@@ -64,6 +64,7 @@ export default {
       })
         .then((response) => {
           if (response.data.token) {
+            //On ajoute le token au localStorage
             localStorage.setItem("user", JSON.stringify(response.data));
             this.$router.push("/home");
           }
@@ -76,6 +77,7 @@ export default {
     },
   },
   mounted() {
+    //On vérifie si l'utilisateur est déjà connecté
     const user = localStorage.getItem("user");
     if (user) {
       this.$router.push("/home");

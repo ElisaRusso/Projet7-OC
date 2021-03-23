@@ -115,6 +115,7 @@ export default {
         })
         .catch((error) => (console.log(error), (this.message = true)));
     },
+    //Vérification de la complexité du mot de passe
     checkPassword() {
       this.password_length = this.passwordValue.length;
       this.showModal = true;
@@ -136,6 +137,7 @@ export default {
         this.contains_uppercase === true &&
         this.contains_number === true
       ) {
+        //Activation du bouton valider
         this.valid_password = true;
         this.isDisabled = false;
       } else {

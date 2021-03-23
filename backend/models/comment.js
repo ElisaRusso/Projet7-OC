@@ -5,7 +5,6 @@ const Article = require('./article');
 
 
 const Comment = sequelize.define('Comment', {
-    // Model attributes are defined here
     userId: {
         type: DataTypes.INTEGER(11),
         allowNull: false

@@ -15,7 +15,7 @@ const options = {
 
 const RegEx = complexity.create(options)
 
-
+//Création d'un compte
 exports.signup = (req, res, next) => {
 
     bcrypt.hash(req.body.password, 10)
@@ -41,7 +41,7 @@ exports.signup = (req, res, next) => {
 
 };
 
-
+//Connexion
 exports.login = (req, res, next) => {
     User.findOne({
         where: {
@@ -75,14 +75,14 @@ exports.login = (req, res, next) => {
 
 }
 
-
+//Récupération de tous les utilisateurs
 exports.GetAllUsers = (req, res, next) => {
     User.findAll()
         .then(users => res.status(200).json(users))
         .catch(error => res.status(400).json({ error }));
 }
 
-
+//Récupération d'un utilisateur par id
 exports.getOneUser = (req, res, next) => {
     User.findOne({
         where: {
@@ -94,6 +94,7 @@ exports.getOneUser = (req, res, next) => {
 
 }
 
+//Récupération d'un utilisateur par nom d'utilisateur
 exports.getOneUserByUsername = (req, res, next) => {
     User.findOne({
         where: {
@@ -105,12 +106,15 @@ exports.getOneUserByUsername = (req, res, next) => {
 
 }
 
+//Suppression d'un utilisateur
 exports.deleteUser = (req, res, next) => {
+    //Suppression des articles créés par cet utilisateur
     Article.destroy({
         where: {
             userId: req.params.id
         }
     })
+    //Suppression des commentaires créés par cet utilisateur
     Comment.destroy({
         where: {
             userId: req.params.id

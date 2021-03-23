@@ -3,7 +3,6 @@ const { Sequelize, DataTypes, Op } = require('sequelize');
 const sequelize = require('../db.config')
 
 const Article = sequelize.define('Article', {
-    // Model attributes are defined here
     userId: {
         type: DataTypes.INTEGER(11),
         allowNull: false

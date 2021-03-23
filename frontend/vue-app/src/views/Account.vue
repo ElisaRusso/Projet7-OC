@@ -31,6 +31,7 @@ export default {
     };
   },
   mounted() {
+    //On récupère les informations de l'utilisateur actuellement connecté
     const user = JSON.parse(localStorage.getItem("user"));
     this.userId = user.token;
     axios
@@ -40,6 +41,7 @@ export default {
   },
   methods: {
     deleteAccount() {
+      //Suprression d'un utilisateur
       const user = JSON.parse(localStorage.getItem("user"));
       let header = {
         headers: {

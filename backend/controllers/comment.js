@@ -1,6 +1,7 @@
 const Comment = require('../models/comment');
 const User = require('../models/user')
 
+//Création d'un commentaire
 exports.createComment = (req, res, next) => {
 
     const commmentObject = { ...req.body };
@@ -12,13 +13,14 @@ exports.createComment = (req, res, next) => {
         .catch(error => res.status(400).json({ error }))
 }
 
-
+//Récupération de tous les commentaires
 exports.getAllComments = (req, res, next) => {
     Comment.findAll()
         .then(comments => res.status(201).json(comments))
         .catch(error => res.status(400).json({ error }));
 }
 
+//Récupération des commentaires d'un article spécifique
 exports.getCommentsByArticle = (req, res, next) => {
     Comment.findAll({
         where: {
@@ -30,7 +32,7 @@ exports.getCommentsByArticle = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 }
 
-
+//Suppression d'un commentaire
 exports.deleteComment = (req, res, next) => {
     Comment.destroy({
         where: {

@@ -38,6 +38,7 @@ export default {
   },
 
   methods: {
+    //Affichage de tous les posts
     displayArticles() {
       const user = JSON.parse(localStorage.getItem("user"));
       axios({
@@ -51,6 +52,7 @@ export default {
         .then((response) => (this.articles = response.data))
         .catch((error) => console.log(error));
     },
+    //On vérifie que l'utilisateur est connecté
     checkIfToken() {
       const user = JSON.parse(localStorage.getItem("user"));
       if (user.token) {

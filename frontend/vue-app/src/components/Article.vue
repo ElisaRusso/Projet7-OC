@@ -19,6 +19,7 @@ export default {
   },
 
   mounted() {
+    //Affichage d'un article par id
     const urlId = this.$route.params.id;
     axios
       .get("http://localhost:3000/api/articles/" + urlId)

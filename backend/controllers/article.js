@@ -4,7 +4,7 @@ const Comment = require('../models/comment')
 const fs = require('fs');
 
 
-
+//Création d'un post
 exports.createArticle = (req, res, next) => {
     if (req.body) {
         const articleObject = { ...req.body };
@@ -31,6 +31,7 @@ exports.createArticle = (req, res, next) => {
 
 }
 
+//Suppression d'un post
 exports.deleteArticle = (req, res, next) => {
     Article.findOne({
         where: {
@@ -38,6 +39,7 @@ exports.deleteArticle = (req, res, next) => {
         }
     })
         .then(article => {
+            //On vérifie si le post contient une image
             if (article.imageUrl != '' || article.imageUrl != null) {
                 const filename = article.imageUrl.split('/images/')[1];
                 fs.unlink(`images/${filename}`, () => {
@@ -51,6 +53,7 @@ exports.deleteArticle = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 
     function destroyArticle() {
+        //Suppresion des commentaires liés à ce post
         Comment.destroy({
             where: {
                 articleId: req.params.id
@@ -66,7 +69,9 @@ exports.deleteArticle = (req, res, next) => {
     }
 };
 
+//Mofification d'un post
 exports.modifyArticle = (req, res, next) => {
+    //On vérifie si l'utilisateur modifie l'image du post
     if (req.file) {
         Article.findOne({
             where: {
@@ -100,6 +105,7 @@ exports.modifyArticle = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+//Récupération d'un post spécifique par id
 exports.getOneArticle = (req, res, next) => {
     Article.findOne({
         where: { id: req.params.id },
@@ -109,6 +115,7 @@ exports.getOneArticle = (req, res, next) => {
         .catch(error => res.status(404).json({ error }));
 }
 
+//Récupération de tous les posts
 exports.getAllArticles = (req, res, next) => {
     Article.findAll(
         { include: [{ model: User, as: 'user' }] })

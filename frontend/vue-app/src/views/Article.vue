@@ -69,6 +69,7 @@ export default {
     },
 
     isOwnerCheck() {
+      //On vérifie que l'utilisateur est propriétaire du post ou s'il est un administrateur
       const user = JSON.parse(localStorage.getItem("user"));
       this.userId = user;
 

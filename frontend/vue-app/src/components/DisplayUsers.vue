@@ -26,6 +26,7 @@ export default {
     };
   },
   mounted() {
+    //On vérifie si l'utilisateur est un administrateur
     const user = JSON.parse(localStorage.getItem("user"));
     if (user.isAdmin == true) {
       this.showModal = true;
@@ -51,6 +52,8 @@ export default {
       this.selectedButton = event.target.previousSibling.textContent.trim();
       this.checkUser();
     },
+
+    //On vérifie à quel utilisateur correspond le bouton cliqué
     checkUser() {
       axios
         .get("http://localhost:3000/api/auth/user/" + this.selectedButton)
