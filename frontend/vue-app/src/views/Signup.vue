@@ -20,7 +20,7 @@
           type="email"
           id="email"
           name="user_email"
-          placeholder="email@hotmail.com"
+          placeholder="email@exemple.com"
           v-model="emailValue"
         />
       </div>
